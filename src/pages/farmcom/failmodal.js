@@ -10,10 +10,6 @@ const FailModal = () => {
         setBluramount("blur(0px)")
       }
     
-      function openModal() {
-        setIsFail(true)
-      }
-
   return (
     <>
       <Transition appear show={isFail} as={Fragment}>

@@ -7,8 +7,10 @@ import Farm from './pages/Farm';
 import Tribe from './pages/Tribe';
 import Market from './pages/Market';
 import Capsule from './pages/Capsule';
-import { useState,useEffect } from 'react';
-import Contractshook from './pages/farmcom/contractshook';
+import { useState} from 'react';
+import SuccessModal from "./pages/farmcom/successmodal";
+import MiningModal from "./pages/farmcom/miningmodal";
+import FailModal from "./pages/farmcom/failmodal";
 export const MainContext = React.createContext(null);
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
             <Route path='/Tribe' element={<Tribe/>} />
           </Routes>
         </div>
-  
+        <SuccessModal/>
+        <MiningModal/>
+        <FailModal/>
       </MainContext.Provider>
     </Router>
   );

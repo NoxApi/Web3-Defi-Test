@@ -4,12 +4,11 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
   background: #0E0F19;
-  height: 100px;
+  height: 10vh;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  width: 100vw;
+  padding-top: 2.5vh;
+  padding-bottom: 2.5vh;
   filter:{bluramount}
 `;
 
@@ -28,58 +27,22 @@ export const NavLink = styled(Link)`
   }
 `;
 export const NavLink2 = styled(Link)`
-  color: #fff;
+  position: fixed;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  padding-right: 4rem;
-  height: 100%;
-  cursor: pointer;
-
+  height: 4vh;
+  padding-right: vh;
 `;
 
 
 export const NavMenu = styled.div`
   display: flex;
-  white-space: nowrap; */
-
-  @media screen and (max-width: 768px) {
+  justify-content: space-between;
+  width:70vw;
+  margin-left:15vw;
+  margin-right:15vw;
+  @media screen and (max-width: 1580px) {
     display: none;
   }
 `;
-
-export const NavBtn = styled.nav`
-  display: flex;
-  align-items: center;
-  margin-right: 0px;
-
-  /* Third Nav */
-  /* justify-content: flex-end;
-  width: 100vw; */
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const NavBtnLink = styled(Link)`
-  border-radius: 5px;
-  background: #F9D390;
-  padding: 10px 22px;
-  color: #fff;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
-  color: #000000;
-
-  /* Second Nav */
-  margin-left: 24px;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
-  }
-`;
+;
