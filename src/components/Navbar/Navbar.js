@@ -54,7 +54,7 @@ const Navbar = () => {
          {currentAccount && (
          <div class="flex">
            <div class="">
-          <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-xl py-[5px] px-[20px]" >{parseFloat(evma).toFixed(3) + " EVM"}</p>
+          <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-[1vw] py-[0.6vh] px-[1vw]" >{parseFloat(evma).toFixed(3) + " EVM"}</p>
           <p class="text-white " onClick={() => {navigator.clipboard.writeText(currentAccount)}}>{currentAccount.substring(0, 17)+"..."}</p>
         </div>
         <img  src={require('../../images/benz.PNG')} alt='logo' class="w-[70px] h-[70px] rounded-full" />

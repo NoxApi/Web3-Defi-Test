@@ -42,7 +42,7 @@ export const NavMenu = styled.div`
   margin-left:15vw;
   margin-right:15vw;
   @media screen and (max-width: 1580px) {
-    display: none;
+    font-size: 0.8vw;
   }
 `;
 ;

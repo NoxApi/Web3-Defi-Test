@@ -16,6 +16,7 @@
     position : absolute;
     width: 35vw;
     margin-left: 7vw;
+    
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -67,9 +68,8 @@
             linear-gradient(to top left, #EEC377,transparent,#5e99a0,transparent,#EEC377); }
   }
   .pickaxe{
-      height: 150px;
-      width : 150px;
-      transform: rotate(-90deg)
+      height: 13vh;
+      width : 7vw;
   }
   @media (prefers-reduced-motion: no-preference) {
     .pickaxe{
