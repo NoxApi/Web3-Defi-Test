@@ -9,6 +9,7 @@ export const Nav = styled.nav`
   width: 100vw;
   padding-top: 2.5vh;
   padding-bottom: 2.5vh;
+  font-size: 12px;
   filter:{bluramount}
 `;
 
@@ -27,11 +28,14 @@ export const NavLink = styled(Link)`
   }
 `;
 export const NavLink2 = styled(Link)`
-  position: fixed;
+  position: absolute;
   display: flex;
   align-items: center;
   height: 4vh;
-  padding-right: vh;
+  @media screen and (max-width: 1307px) {
+    postion : 
+  	width : 2vh;
+  }
 `;
 
 

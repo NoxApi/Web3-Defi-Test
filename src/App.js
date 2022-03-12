@@ -31,7 +31,15 @@ function App() {
 
   return (
     <Router>
-      <MainContext.Provider value={{isFail,setIsFail,setIsMining,isMining,isSuccess,setIsSuccess,lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender}}>
+      <MainContext.Provider 
+      
+        value={{
+        isFail,setIsFail,setIsMining,isMining,isSuccess,setIsSuccess,
+        lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,
+        bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
+        isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
+        }}>
+
         <div class ="w-full h-[90vh]">
           <Navbar />
           <Routes >

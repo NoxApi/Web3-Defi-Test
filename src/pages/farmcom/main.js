@@ -42,11 +42,11 @@ return(
           </div>
     
         </div>
-        <div class=" flex col-span-2  h-[120px] justify-between" >
+        <div class=" flex col-span-2  h-[15vh] justify-between" >
           <div class="text-[#F9D390] text-5xl items-center py-[60px]">
             EVM-BNB
           </div>
-          <div class=" text-[#FFFFFF] text-[0.8vw]   py-[60px] space-y-[1vh] ">
+          <div class=" text-[#FFFFFF] text-[0.8vw]  py-[60px] space-y-[1vh] ">
             <p>Get EVM-BNB LP </p>
             <p>View Contract </p>
           </div>

@@ -1,22 +1,16 @@
 import React from 'react';
-import Contractshook from './contractshook';
 import { Dialog,Transition  } from '@headlessui/react'
-import { useEffect,useContext,Fragment } from 'react'
+import { useContext,Fragment } from 'react'
 import { MainContext } from '../../App';
 const Modaltwo = (props) => {
-    const appro = props.appro
     const withdraw = props.withdraw
-    const {setBluramount,isapprove,isOpen2,setIsOpen2,amount,evmstaked,setAmount} = useContext(MainContext)
+    const {setBluramount,isOpen2,setIsOpen2,amount,evmstaked,setAmount} = useContext(MainContext)
 
     function closeModal() {
         setIsOpen2(false)
         setBluramount("blur(0px)")
       }
     
-      function openModal() {
-        setIsOpen2(true)
-      }
-  
   return (
     <>
       <Transition appear show={isOpen2} as={Fragment}>
