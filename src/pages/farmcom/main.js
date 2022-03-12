@@ -46,24 +46,24 @@ return(
           <div class="text-[#F9D390] text-5xl items-center py-[60px]">
             EVM-BNB
           </div>
-          <div class=" text-[#FFFFFF] text-m   py-[60px] space-y-4 ">
+          <div class=" text-[#FFFFFF] text-[0.8vw]   py-[60px] space-y-[1vh] ">
             <p>Get EVM-BNB LP </p>
             <p>View Contract </p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624]">
+        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[1vh]">
             <p class="text-[#C2C2C2]">APR </p>
             <p class="text-[#FFFFFF] text-[1vw]">{560000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624]">
+        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[1vh]">
               <p class="text-[#C2C2C2]">Liquidity </p>
               <p class="text-[#FFFFFF] text-[1vw]">{"$"+400000000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl w-[16vw] h-[24vh] bg-[#121624] flex" >
+        <div class="box-border rounded-3xl w-[16vw] h-[24vh] bg-[#121624] flex content-center" >
           <div class=" p-[2vw] space-y-[1vh] w-[16vw]" >
               <p class="text-[#C2C2C2]">EVM Earned</p>
               {(isapprove===1||isapprove===2) && <p class="text-[#C2C2C2] text-[1.1vw]">{parseFloat(evmearn).toFixed(5)+" EVM"}</p>}
@@ -79,7 +79,7 @@ return(
               </button>}
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[24vh] bg-[#121624]">
+        <div class="box-border rounded-3xl  w-[16vw] h-[24vh] bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[1vh] w-[16vw]">
               <p class="text-[#C2C2C2]">EVM-BNB Staked</p>
               {(isapprove===1||isapprove===2)  &&<p class="text-[#FFFFFF] text-[1.2vw]">{evmstaked}</p>}
@@ -91,15 +91,18 @@ return(
               {isapprove===1 &&<button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick ={setclick}>
                <p class="text-[#000000] text-[1.2vw] py-[1vh] px-[3.5vw]" >{"Stake LP"}</p>
               </button>}
-              {isapprove===2 && <div class="flex h-[60px] w-[400px]">
+            <div class= "h-[5vh] flex content-center">
+              {
+              isapprove===2 && <div class="flex">
               <button class="box-border border-2 border-[#DD6AB7] rounded-lg bg-[#181D31] " onClick ={setclick2}>
-              <p class="text-[#DD6AB7] text-[1vw] py-[] px-[0.7vw]" >{"-Unstake "}</p>
+              <p class="text-[#DD6AB7] text-[1vw]  px-[0.7vw]" >{"-Unstake "}</p>
              </button>
-              <button class="box-border border-2 border-[#74BFC8] ml-[10px] rounded-lg bg-[#181D31] " onClick ={setclick}>
-               <p class="text-[#74BFC8] text-[1vw] py-[] px-[1.2vw] " >{"+Stake"}</p>
+              <button class="box-border border-2 border-[#74BFC8] ml-[0.5vw] rounded-lg bg-[#181D31] " onClick ={setclick}>
+               <p class="text-[#74BFC8] text-[1vw]  px-[1.2vw] " >{"+Stake"}</p>
               </button>
              </div>
               }
+            </div>
           </div>
         </div>
       </div>
