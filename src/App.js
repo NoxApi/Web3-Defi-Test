@@ -11,6 +11,7 @@ import { useState} from 'react';
 import SuccessModal from "./pages/farmcom/successmodal";
 import MiningModal from "./pages/farmcom/miningmodal";
 import FailModal from "./pages/farmcom/failmodal";
+import SP from './pages/Sacredpet';
 export const MainContext = React.createContext(null);
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             <Route path='/Cap' element={<Capsule/>} />
             <Route path='/Farm' element={<Farm/>} />
             <Route path='/Tribe' element={<Tribe/>} />
+            <Route path='/SP' element={<SP/>} />
           </Routes>
         </div>
         <SuccessModal/>

@@ -29,7 +29,7 @@ const Navbar = () => {
             <NavLink2 to='/' >
               <img src={evermoon1} alt='logo' class="h-[50px]" />
             </NavLink2>
-            <div class="flex ml-[280px] bp2:ml-0">
+            <div class="flex ml-[280px] bp2:ml-0 ">
               <NavLink to='/Mp' activeStyle>
                 MARKETPLACE
               </NavLink>
@@ -37,16 +37,19 @@ const Navbar = () => {
                 CAPSULE
               </NavLink>
               <div className="DD">
+              <button className="DEFI">
               DE-FI
-              <div class="relative flex flex-col border-2 border-[#fe0000] rounded-lg bg-white w-[7vw] h-[10vh] mt-[15vh]  z-10">
-              <Link   to='/Farm' class="ml-[1vw] bg-black mt-[2vh]">
-              FARM
-              </Link>
-              <Link  to='/SP' class="ml-[1vw]  bg-amber-500 mt-[2vh]">
-              SACRET-PET
-              </Link>
+              </button>
+                <div className="DDcontent">
+                  <Link   to='/Farm' class="mt-[1.5vh] ml-[0.5vw]">
+                    FARM
+                  </Link>
+                  <Link  to='/SP' class="mt-[1.5vh] ml-[0.5vw]">
+                    SACRET-PET
+                  </Link>
+                </div>
               </div>
-              </div>
+          
               <NavLink to='/Tribe' activeStyle>
                 TRIBE CHALLENGE
               </NavLink>
