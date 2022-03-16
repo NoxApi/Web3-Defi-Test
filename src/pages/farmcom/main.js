@@ -95,10 +95,10 @@ return(
               {
               isapprove===2 && <div class="flex">
               <button class="box-border border-2 border-[#DD6AB7] rounded-lg bg-[#181D31] " onClick ={setclick2}>
-              <p class="text-[#DD6AB7] text-[1vw]  px-[0.7vw]" >{"-Unstake "}</p>
+              <p class="text-[#DD6AB7] text-[1em]  bp1:text-[0.7em] px-[0.9vw] bp1:px-[0.8vw]" >{"-Unstake "}</p>
              </button>
               <button class="box-border border-2 border-[#74BFC8] ml-[0.5vw] rounded-lg bg-[#181D31] " onClick ={setclick}>
-               <p class="text-[#74BFC8] text-[1vw]  px-[1.2vw] " >{"+Stake"}</p>
+               <p class="text-[#74BFC8] text-[1em] bp1:text-[0.7em] px-[1.2vw] " >{"+Stake"}</p>
               </button>
              </div>
               }

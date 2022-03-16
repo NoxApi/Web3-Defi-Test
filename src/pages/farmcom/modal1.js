@@ -2,6 +2,7 @@ import React from 'react';
 import { Dialog,Transition  } from '@headlessui/react'
 import { useContext,Fragment } from 'react'
 import { MainContext } from '../../App';
+
 const Modalone = (props) => {
     const appro = props.appro
     const deposit = props.deposit
