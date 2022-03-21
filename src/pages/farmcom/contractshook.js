@@ -3,8 +3,9 @@ import '../../App.css';
 import abi from './../../components/utils/MiniChefV2.json'
 import abi2 from './../../components/utils/LoongTuu.json'
 import abi3 from './../../components/utils/EvermoonToken.json'
-import { useContext,useEffect } from 'react'
+import { useContext,useState,useEffect } from 'react'
 import { MainContext } from '../../App';
+
 
 const Contractshook = () => {
   //contract address
@@ -16,20 +17,12 @@ const Contractshook = () => {
   const evmABI = abi3.abi;
   const minichefABI = abi.abi;
   const { ethereum } = window;
-  let provider ="";
-  let signer = "";
-  let token = "";
-  let evm = "";
-  let farm = "";
-  if (ethereum) {
-    //provider & signer
-    let provider = new ethers.providers.Web3Provider(ethereum);
-    let signer = provider.getSigner();
-    //all contracts 
-    let token = new ethers.Contract(pooladdr,TokenABI,signer);
-    let evm = new ethers.Contract(evmaddr,evmABI,signer);
-    let farm = new ethers.Contract(contractAddress, minichefABI, signer);
-  }
+  const [provider,setProvider] = useState()
+  const [signer,setSigner] = useState()
+  const [token ,setToken] = useState()
+  const [evm,setEvm] = useState()
+  const [farm,setFarm] = useState()
+
 
   //all context
   const {setIsMining,setIsFail,setIsSuccess,lp, setLp,amount,setAmount,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount} = useContext(MainContext)
@@ -52,6 +45,16 @@ const Contractshook = () => {
     setBluramount("blur(4px)")
   }
 
+  function setup() {
+        //provider & signer
+        setProvider (new ethers.providers.Web3Provider(ethereum));
+        setSigner (provider.getSigner());
+        //all contracts 
+        setToken (new ethers.Contract(pooladdr,TokenABI,signer));
+        setEvm (new ethers.Contract(evmaddr,evmABI,signer));
+        setFarm (new ethers.Contract(contractAddress, minichefABI, signer));
+
+  }
   //geting info (ex.currency)
   const getevm = async () => {
     if (currentAccount.length !== 0) {
@@ -200,6 +203,7 @@ const Contractshook = () => {
         if (accounts.length !== 0) {
           const account = accounts[0];
           console.log("Found an authorized account:", account);
+          setup();
           setCurrentAccount(account);
         } else {
           console.log("No authorized account found")
