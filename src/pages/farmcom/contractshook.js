@@ -19,9 +19,17 @@ const Contractshook = () => {
   const { ethereum } = window;
   let provider = "";
   let signer = "";
-  const [token ,setToken] = useState()
-  const [evm,setEvm] = useState()
-  const [farm,setFarm] = useState()
+  let token  = "";
+  let evm = "";
+  let farm = "";
+  if (ethereum) {
+    provider = new ethers.providers.Web3Provider(ethereum);
+        signer = provider.getSigner();
+        //all contracts 
+        token = new ethers.Contract(pooladdr,TokenABI,signer);
+        evm = new ethers.Contract(evmaddr,evmABI,signer);
+        farm = new ethers.Contract(contractAddress, minichefABI, signer);
+  }
 
 
   //all context
@@ -50,10 +58,11 @@ const Contractshook = () => {
         provider = new ethers.providers.Web3Provider(ethereum);
         signer = provider.getSigner();
         //all contracts 
-        setToken (new ethers.Contract(pooladdr,TokenABI,signer));
-        setEvm (new ethers.Contract(evmaddr,evmABI,signer));
-        setFarm (new ethers.Contract(contractAddress, minichefABI, signer));
+        token = new ethers.Contract(pooladdr,TokenABI,signer);
+        evm = new ethers.Contract(evmaddr,evmABI,signer);
+        farm = new ethers.Contract(contractAddress, minichefABI, signer);
         console.log("setup done")
+        setRerender(rerender+1);
 
   }
   //geting info (ex.currency)
@@ -181,6 +190,7 @@ const Contractshook = () => {
       try{
         const { ethereum } = window;
         if (ethereum) {
+          setup()
           console.log("etherum present")
           }
       }
@@ -206,6 +216,7 @@ const Contractshook = () => {
           console.log("Found an authorized account:", account);
           setup();
           setCurrentAccount(account);
+          setRerender(rerender+1);
         } else {
           console.log("No authorized account found")
           setCurrentAccount("")
