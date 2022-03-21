@@ -190,7 +190,6 @@ const Contractshook = () => {
       try{
         const { ethereum } = window;
         if (ethereum) {
-          setup()
           console.log("etherum present")
           }
       }
