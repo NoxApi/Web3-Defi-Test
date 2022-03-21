@@ -17,8 +17,8 @@ const Contractshook = () => {
   const evmABI = abi3.abi;
   const minichefABI = abi.abi;
   const { ethereum } = window;
-  const [provider,setProvider] = useState()
-  const [signer,setSigner] = useState()
+  let provider = "";
+  let signer = "";
   const [token ,setToken] = useState()
   const [evm,setEvm] = useState()
   const [farm,setFarm] = useState()
@@ -47,12 +47,13 @@ const Contractshook = () => {
 
   function setup() {
         //provider & signer
-        setProvider (new ethers.providers.Web3Provider(ethereum));
-        setSigner (provider.getSigner());
+        provider = new ethers.providers.Web3Provider(ethereum);
+        signer = provider.getSigner();
         //all contracts 
         setToken (new ethers.Contract(pooladdr,TokenABI,signer));
         setEvm (new ethers.Contract(evmaddr,evmABI,signer));
         setFarm (new ethers.Contract(contractAddress, minichefABI, signer));
+        console.log("setup done")
 
   }
   //geting info (ex.currency)
