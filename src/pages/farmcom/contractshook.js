@@ -15,14 +15,22 @@ const Contractshook = () => {
   const TokenABI = abi2.abi;
   const evmABI = abi3.abi;
   const minichefABI = abi.abi;
-  //provider & signer
   const { ethereum } = window;
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
-  //all contracts 
-  const token = new ethers.Contract(pooladdr,TokenABI,signer);
-  const evm = new ethers.Contract(evmaddr,evmABI,signer);
-  const farm = new ethers.Contract(contractAddress, minichefABI, signer);
+  let provider ="";
+  let signer = "";
+  let token = "";
+  let evm = "";
+  let farm = "";
+  if (ethereum) {
+    //provider & signer
+    let provider = new ethers.providers.Web3Provider(ethereum);
+    let signer = provider.getSigner();
+    //all contracts 
+    let token = new ethers.Contract(pooladdr,TokenABI,signer);
+    let evm = new ethers.Contract(evmaddr,evmABI,signer);
+    let farm = new ethers.Contract(contractAddress, minichefABI, signer);
+  }
+
   //all context
   const {setIsMining,setIsFail,setIsSuccess,lp, setLp,amount,setAmount,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount} = useContext(MainContext)
   
