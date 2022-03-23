@@ -22,33 +22,13 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  &.active {
+  &:focus {
     color: #F9D390;
     background:linear-gradient(black 25%, #CA9E51)
   }
   @media screen and (max-width: 1200px) {
     display:none;
   }
-`;
-
-export const DD = styled.div`
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-  height: 100%;
-  cursor: pointer;
-
-  &.hover {
-    color: #F9D390;
-    background:linear-gradient(black 25%, #CA9E51)
-  }
-  @media screen and (max-width: 1200px) {
-    display:none;
-  }
-  DD:hover {
-    color: #F9D390;
-    background:linear-gradient(black 25%, #CA9E51)
 `;
 
 export const NavLink2 = styled(Link)`

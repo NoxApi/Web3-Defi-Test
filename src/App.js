@@ -12,6 +12,8 @@ import SuccessModal from "./pages/farmcom/successmodal";
 import MiningModal from "./pages/farmcom/miningmodal";
 import FailModal from "./pages/farmcom/failmodal";
 import SP from './pages/Sacredpet';
+import Mintpet from './pages/secretpetcom';
+import Inven from './pages/secretpetcom/inven';
 export const MainContext = React.createContext(null);
 
 function App() {
@@ -49,7 +51,11 @@ function App() {
             <Route path='/Cap' element={<Capsule/>} />
             <Route path='/Farm' element={<Farm/>} />
             <Route path='/Tribe' element={<Tribe/>} />
-            <Route path='/SP' element={<SP/>} />
+            <Route path='SP' element={<SP/>}>
+              <Route index element={<Mintpet/>} />
+              <Route path='Mint' element={<Mintpet/>}/>
+              <Route path='inven' element={<Inven/>}/>
+            </Route>
           </Routes>
         </div>
         <SuccessModal/>

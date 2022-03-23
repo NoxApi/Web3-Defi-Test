@@ -10,7 +10,6 @@ import {
   NavLink,
   NavLink2,
   NavMenu,
-  DD,
 } from './NavbarElements';
 import Contractshook from '../../pages/farmcom/contractshook';
 
@@ -37,14 +36,14 @@ const Navbar = () => {
                 CAPSULE
               </NavLink>
               <div className="DD">
-              <button className="DEFI">
+              <button className="DEFI" activeStyle>
               DE-FI
               </button>
                 <div className="DDcontent">
-                  <Link   to='/Farm' class="mt-[1.5vh] ml-[0.5vw]">
+                  <Link   to='/Farm' class="mt-[1.5vh] py-[3px] ml-[0.5vw]">
                     FARM
                   </Link>
-                  <Link  to='/SP' class="mt-[1.5vh] ml-[0.5vw]">
+                  <Link  to='/SP' class="mt-[1.5vh] py-[3 px] ml-[0.5vw]">
                     SACRET-PET
                   </Link>
                 </div>
