@@ -14,6 +14,7 @@ import FailModal from "./pages/farmcom/failmodal";
 import SP from './pages/Sacredpet';
 import Mintpet from './pages/secretpetcom';
 import Inven from './pages/secretpetcom/inven';
+import Info from './pages/secretpetcom/info';
 export const MainContext = React.createContext(null);
 
 function App() {
@@ -55,6 +56,8 @@ function App() {
               <Route index element={<Mintpet/>} />
               <Route path='Mint' element={<Mintpet/>}/>
               <Route path='inven' element={<Inven/>}/>
+              <Route path='Info' element={<Info/>}/>
+              
             </Route>
           </Routes>
         </div>

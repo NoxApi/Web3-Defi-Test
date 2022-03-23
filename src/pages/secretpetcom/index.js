@@ -7,7 +7,7 @@ const Mintpet = () => {
   return (
   <>
 
-      <div class="grid grid-cols-5 gap-[2vw] h-[600px] w-[60vw] px-[2.5vw] ml-[20vw]" >
+      <div class="grid grid-cols-5 gap-[2vw] h-[800px] w-[60vw] px-[2.5vw] ml-[20vw]" >
         {/* griditem */}
         <div class="row-span-4 col-span-2 w-[100%] h-[600px] flex justify-end items-center flex-col" >
           <img src={egg} alt='logo' class="h-[500px] w-[17vw]"  />
