@@ -1,0 +1,53 @@
+.DEFI {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 2rem;
+    height: 100%;
+    cursor: pointer;
+    @media (max-width:1024px) { 
+      display: none;
+    }
+    
+}
+.DDcontent{
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  border-color: #F9D390;
+  color: #fff;
+  z-index: 10;
+  margin-top: 1.7vh;
+  height: 10vh;
+  width: 7vw;
+  background-color:#181D31;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out ;
+
+
+}
+
+.DD > .DEFI:focus.active,
+.DEFI:hover{
+    color: #F9D390;
+    background:linear-gradient(black 25%, #CA9E51)
+  }
+
+.DD{
+  position: relative;
+
+}
+
+.DD > .DEFI:focus+ .DDcontent {
+  opacity: 1;
+  z-index: 10;
+  transform: translateY(0);
+}
+.DEFI.active{
+  color: #F9D390;
+    background:linear-gradient(black 25%, #CA9E51)
+}

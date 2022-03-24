@@ -5,6 +5,7 @@ import Farmmain from "./farmcom/main";
 import Contractshook from "./farmcom/contractshook";
 
 const Farm = () => {  
+  const { ethereum } = window;
   const { harvest,appro ,deposit,withdraw} = Contractshook()
   return (
   <>

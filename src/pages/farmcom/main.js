@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { MainContext } from '../../App';
 import bnb from '../../images/bnb.svg'
 import ayla1 from '../../images/Ayla1.svg'
-import evermoonlogo from '../../images/Evermoon-3.svg'
+import evermoonlogo from '../../images/EVMBNBLP.svg'
 
 const Farmmain = (props) => {
     const harvest = props.harvest;
@@ -20,85 +20,82 @@ const Farmmain = (props) => {
     }
     
 return(
-    <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"100vh",width:"100vw", filter:bluramount }}>
+    <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"60vw",width:"100vw", filter:bluramount }}>
       {/* under Navbar */}
-    <div class="flex  items-center  h-[10vh]  py-[6vh] mx-[15vw] justify-between ">
-      <div class="text-[#F9D390] text-5xl text-center font-serif">
+    <div class="flex  items-center  h-[7vw]  py-[4vw] mx-[15vw] justify-between ">
+      <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2.5vw] text-center font-serif">
         EVERMOON FARM
       </div>
-      <div class="box-border rounded-lg border-2 bg-[#181D31] border-[#FFFFFF] p-[10px]" >
-        <img src={require('../../images/question.png')} alt='logo' class=" h-[20px] "  />
+      <div class="box-border rounded-lg border-2 bg-[#181D31] border-[#FFFFFF] p-[0.6vw]" >
+        <img src={require('../../images/question.png')} alt='logo' class=" h-[1vw] "  />
       </div>
     </div >
       {/* Farm Card */}
     <div className="Abackground">
-      <div class="grid grid-cols-4 gap-[2vw] h-[64.3vh] w-[70vw] pr-[2.5vw]" >
+      <div class="grid grid-cols-4 gap-[2vw] h-[37vw] w-[70vw] pr-[2.5vw] " >
         
-        <div class="row-span-4 col-span-2 w-[100%] h-[64.3vh] flex items-center justify-center" >
+        <div class="row-span-4 col-span-2 w-[100%] h-[100%] flex items-center justify-center" >
         <img src={ayla1} alt='logo' className ="Aone" />
-        <div className ="Atwo">
-          <img src={bnb} alt='logo' class=" absolute h-[5vw] w-[5vw] ml-[12vw]"  />
-          <img src={evermoonlogo} alt='logo' class="absolute h-[15vw] w-[15vw]"  />
-          </div>
+        <img src={evermoonlogo} alt='logo' class="Atwo"  />
     
         </div>
-        <div class=" flex col-span-2  h-[15vh] justify-between" >
-          <div class="text-[#F9D390] text-5xl items-center py-[60px]">
+        <div class=" flex col-span-2  h-[7vw] justify-between " >
+          <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2vw] items-center py-[3vw]">
             EVM-BNB
           </div>
-          <div class=" text-[#FFFFFF] text-[0.8vw]  py-[60px] space-y-[1vh] ">
+          <div class=" text-[#FFFFFF] text-[0.8vw]  py-[3vw] space-y-[0.6vw] ">
             <p>Get EVM-BNB LP </p>
             <p>View Contract </p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624] flex content-center">
-          <div class=" p-[2vw] space-y-[1vh]">
-            <p class="text-[#C2C2C2]">APR </p>
+        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] bg-[#121624] flex content-center">
+          <div class=" p-[2vw] space-y-[0.6vw]">
+            <p class="text-[#C2C2C2] text-[0.8vw]">APR </p>
             <p class="text-[#FFFFFF] text-[1vw]">{560000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vh] bg-[#121624] flex content-center">
-          <div class=" p-[2vw] space-y-[1vh]">
-              <p class="text-[#C2C2C2]">Liquidity </p>
+        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] bg-[#121624] flex content-center">
+          <div class=" p-[2vw] space-y-[0.6vw]">
+              <p class="text-[#C2C2C2] text-[0.8vw]">Liquidity </p>
               <p class="text-[#FFFFFF] text-[1vw]">{"$"+400000000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl w-[16vw] h-[24vh] bg-[#121624] flex content-center" >
-          <div class=" p-[2vw] space-y-[1vh] w-[16vw]" >
-              <p class="text-[#C2C2C2]">EVM Earned</p>
+        <div class="box-border rounded-3xl w-[16vw] h-[13vw] bg-[#121624] flex content-center" >
+          <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]" >
+              <p class="text-[#C2C2C2] text-[0.9vw]">EVM Earned</p>
               {(isapprove===1||isapprove===2) && <p class="text-[#C2C2C2] text-[1.1vw]">{parseFloat(evmearn).toFixed(5)+" EVM"}</p>}
               {(isapprove===0) &&<p class="text-[#767676] text-[1.1vw]">{0+" EVM"}</p>}
               {(isapprove===1||isapprove===2) && <p class="text-[#c2c2c2] text-[0.6vw]">{"$"+parseFloat((evmearn*0.08)).toFixed(5)}</p>}
               {(isapprove===0) &&<p class="text-[#767676] text-[0.6vw]">{"$"+0}</p>}
               {(isapprove===0||isapprove===1) && <button class="box-border border-[#ffffff] rounded-lg bg-[#7f7f7f] " >
-                <p class="text-[#000000] text-[1.2vw] py-[1vh] px-[4vw]" >{"Harvest"}</p>            
+                <p class="text-[#000000] text-[1.2vw] py-[0.4vw] px-[4vw]" >{"Harvest"}</p>            
               </button>}
               {isapprove===2 && 
-              <button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick={harvest} >
-                <p class="text-[#000000] text-[1.2vw] py-[1vh] px-[4vw]" >{"Harvest"}</p>
+              <button class="box-border border-[#000000] rounded-lg bg-[#F9D390]" onClick={harvest} >
+                <p class="text-[#000000] text-[1.2vw] py-[0.4vw] px-[4vw]" >{"Harvest"}</p>
               </button>}
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[24vh] bg-[#121624] flex content-center">
-          <div class=" p-[2vw] space-y-[1vh] w-[16vw]">
-              <p class="text-[#C2C2C2]">EVM-BNB Staked</p>
+        <div class="box-border rounded-3xl  w-[16vw] h-[13vw] bg-[#121624] flex content-center">
+          <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]">
+              <p class="text-[#C2C2C2] text-[0.9vw]">EVM-BNB Staked</p>
               {(isapprove===1||isapprove===2)  &&<p class="text-[#FFFFFF] text-[1.2vw]">{evmstaked}</p>}
               {isapprove===(0) &&<p class="text-[#767676] text-[1.1vw]">{0}</p>}
               <p class="text-[#767676] text-[0.6vw]">&zwnj;</p>
               {isapprove===0 &&<button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick ={setclick}>
-               <p class="text-[#000000] text-[1.2vw] py-[1vh] px-[3.5vw]" >{"Stake LP"}</p>
+               <p class="text-[#000000] text-[1.2vw] py-[0.6vw] px-[3.5vw]" >{"Stake LP"}</p>
               </button>}
               {isapprove===1 &&<button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick ={setclick}>
-               <p class="text-[#000000] text-[1.2vw] py-[1vh] px-[3.5vw]" >{"Stake LP"}</p>
+               <p class="text-[#000000] text-[1.2vw] py-[0.6vw] px-[3.5vw]" >{"Stake LP"}</p>
               </button>}
-            <div class= "h-[5vh] flex content-center">
+            <div class= "h-[3vw] flex content-center">
               {
-              isapprove===2 && <div class="flex">
-              <button class="box-border border-2 border-[#DD6AB7] rounded-lg bg-[#181D31] " onClick ={setclick2}>
-              <p class="text-[#DD6AB7] text-[1vw]  px-[0.7vw]" >{"-Unstake "}</p>
+              isapprove===2 && <div class="flex justify-between w-[14vw] h-[2.55vw]" >
+              <button class="box-border border-2 border-[#DD6AB7] rounded-lg bg-[#181D31] w-[5.87vw] flex justify-center items-center" onClick ={setclick2}>
+              <p class="text-[#DD6AB7] text-[0.7vw]  " >{"-Unstake "}</p>
              </button>
-              <button class="box-border border-2 border-[#74BFC8] ml-[0.5vw] rounded-lg bg-[#181D31] " onClick ={setclick}>
-               <p class="text-[#74BFC8] text-[1vw]  px-[1.2vw] " >{"+Stake"}</p>
+              <button class="box-border border-2 border-[#74BFC8]  rounded-lg bg-[#181D31] w-[5.87vw] flex justify-center items-center " onClick ={setclick}>
+               <p class="text-[#74BFC8] text-[0.7vw] " >{"+Stake"}</p>
               </button>
              </div>
               }

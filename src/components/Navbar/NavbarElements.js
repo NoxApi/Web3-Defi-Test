@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   width: 100vw;
   padding-top: 2.5vh;
   padding-bottom: 2.5vh;
-  font-size: 12px;
+  font-size: 16px;
   filter:{bluramount}
 `;
 
@@ -22,20 +22,20 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  &.active {
+  &:focus {
     color: #F9D390;
     background:linear-gradient(black 25%, #CA9E51)
   }
+  @media screen and (max-width: 1200px) {
+    display:none;
+  }
 `;
+
 export const NavLink2 = styled(Link)`
   position: absolute;
   display: flex;
   align-items: center;
   height: 4vh;
-  @media screen and (max-width: 1307px) {
-    postion : 
-  	width : 2vh;
-  }
 `;
 
 
@@ -45,8 +45,8 @@ export const NavMenu = styled.div`
   width:70vw;
   margin-left:15vw;
   margin-right:15vw;
-  @media screen and (max-width: 1580px) {
-    font-size: 0.8vw;
+  @media screen and (max-width: 1345px) {
+    font-size: 0.65vw;
   }
 `;
 ;
