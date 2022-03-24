@@ -1,21 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import egg from "./../../images/egg.svg"
-import { useState } from 'react';
+import { SacredContext } from '../Sacredpet';
+import { useState,useContext } from 'react';
 import { useParams } from 'react-router-dom';
 const Info = () => {
-  const { num } = useParams()
+  const { id } = useParams()
+  const {eggs,setEggs } = useContext(SacredContext)
+  const thisegg=eggs[id];
   return (
-  <>
+  <> 
+   <div class="absolute ml-[15vw] text-white">
+     <Link to="/SP/Inven"class="cursor-pointer"> {"< Back"} </Link>
+    </div>
 
       <div class="flex h-[80%] w-[60vw] px-[2.5vw] ml-[20vw] flex-col mt-[3vw]" >
         <img src={egg} alt='logo' class="h-[20vw] w-[15vw] self-center mt-[5px]"  />
         <div class="self-center origin-center flex items-center my-[0.5vw]">
           <div class="bg-[#181D31] rotate-45 border-2">
-            <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.55vw] py-[0.1vw] text-center rotate-[315deg] text-[1vw]">0</p>
+            <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.55vw] py-[0.1vw] text-center rotate-[315deg] text-[1vw]">{thisegg.level}</p>
           </div>
           <div class="self-center origin-center flex flex-col ml-[0.5vw]">
             <p class="text-white text-[0.9vw]  text-left   ">Sacred Egg</p>
-            <p class="text-white text-left  ">#125532</p>
+            <p class="text-white text-left  ">{"#"+thisegg.num}</p>
           </div>
           
         </div>
@@ -147,6 +154,7 @@ const Info = () => {
 
 
       </div>  
+     
   </>
   );
 };

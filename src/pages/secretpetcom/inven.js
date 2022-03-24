@@ -1,34 +1,10 @@
 import eggpic from "./../../images/egg.svg"
+import { SacredContext } from "../Sacredpet";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useContext } from "react";
 const Inven = () => {
-  const [eggs,setEggs] = useState([
-    {num:"1231231",status:"new",level:0},
-    {num:"2333322",status:"ready to claim",level:4},
-    {num:"3445432",status:"",level:5},
-    {num:"2321222",status:"new",level:1},
-    {num:"2333232",status:"new",level:4},
-    {num:"2323111",status:"new",level:2},
-    {num:"2442421",status:"new",level:3},
-    {num:"21241241",status:"new",level:4},
-    {num:"24124124",status:"new",level:5},
-    {num:"243534435",status:"new",level:4},
-    {num:"2213123213",status:"new",level:0},
-    {num:"23423432",status:"new",level:2},
-    {num:"2124rewr",status:"new",level:1},
-    {num:"212rwqr232",status:"new",level:3},
-    {num:"212312sd",status:"new",level:4},
-    {num:"232432e",status:"new",level:5},
-    {num:"21231234",status:"new",level:4},
-    {num:"2wrqre",status:"new",level:7},
-    {num:"2weqwe",status:"new",level:4},
-    {num:"2asfasf",status:"new",level:8},
-    {num:"23123123",status:"new",level:9},
-    {num:"2asdasd",status:"new",level:2},
-
-
-  ])
   const [currentpage,setCurrentpage] = useState(1)
+  const {eggs,setEggs } = useContext(SacredContext)
   const numpage=[];
   const lastitemindex = currentpage * 8;
   const firstitemindex = lastitemindex - 8;
@@ -84,7 +60,7 @@ const Inven = () => {
         {/* inven grid */}
         <div class="row-span-8 col-span- w-[56vw] h-[45vw] my-[30px]"  >
           <div class="flex justify-between items-center">
-            <p class="text-[1.1vw] text-[#c2c2c2]">{3+" Results"}</p>
+            <p class="text-[1.1vw] text-[#c2c2c2]">{3+eggs[2]}</p>
             <div class="flex  ">
               <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-2 border-[#CA9E51] mr-[3.75vw]"  >
                 <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
@@ -96,7 +72,7 @@ const Inven = () => {
           </div>
           <div class="grid grid-cols-4 gap-[1vw] h-[40vw] w-[54vw] mt-[20px] " >
             {currentpageitems.map((egg) => (
-          <Link to={"/SP/Info/"+egg.num} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
+          <Link to={"/SP/Info/"+egg.id} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
             <div class="bg-gradient-to-b from-transparent to-[#EEC377]  border-[1px] border-[] flex flex-col bg-opacity-10">
               <div class="flex justify-between items-center">
                 <p class="  text-left px-[0.3vw] py-[0.1vw] bg-[#fe0000] mt-[0.5vw] ml-[0.2vw] rounded-md text-white text-[0.7vw]"  >{egg.status}</p>

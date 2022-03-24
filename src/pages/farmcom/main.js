@@ -20,7 +20,7 @@ const Farmmain = (props) => {
     }
     
 return(
-    <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"100%",width:"100vw", filter:bluramount }}>
+    <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"60vw",width:"100vw", filter:bluramount }}>
       {/* under Navbar */}
     <div class="flex  items-center  h-[7vw]  py-[4vw] mx-[15vw] justify-between ">
       <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2.5vw] text-center font-serif">

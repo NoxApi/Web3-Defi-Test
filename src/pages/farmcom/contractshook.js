@@ -17,12 +17,21 @@ const Contractshook = () => {
   const minichefABI = abi.abi;
   //provider & signer
   const { ethereum } = window;
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
+  
+  var provider = "";
+  var signer = "";
   //all contracts 
-  const token = new ethers.Contract(pooladdr,TokenABI,signer);
-  const evm = new ethers.Contract(evmaddr,evmABI,signer);
-  const farm = new ethers.Contract(contractAddress, minichefABI, signer);
+  var token = "";
+  var evm = "";
+  var farm = "";
+
+  if (ethereum){
+    var provider = new ethers.providers.Web3Provider(ethereum);
+    var signer = provider.getSigner();
+    var token = new ethers.Contract(pooladdr,TokenABI,signer);
+    var evm = new ethers.Contract(evmaddr,evmABI,signer);
+    var farm = new ethers.Contract(contractAddress, minichefABI, signer);
+    }
   //all context
   const {setIsMining,setIsFail,setIsSuccess,lp, setLp,amount,setAmount,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount} = useContext(MainContext)
   
@@ -43,7 +52,15 @@ const Contractshook = () => {
     setIsFail(true)
     setBluramount("blur(4px)")
   }
-
+  function setup(){
+    if (ethereum){
+      var provider = new ethers.providers.Web3Provider(ethereum);
+      var signer = provider.getSigner();
+      var token = new ethers.Contract(pooladdr,TokenABI,signer);
+      var evm = new ethers.Contract(evmaddr,evmABI,signer);
+      var farm = new ethers.Contract(contractAddress, minichefABI, signer);
+      }
+  }
   //geting info (ex.currency)
   const getevm = async () => {
     if (currentAccount.length !== 0) {
@@ -237,6 +254,7 @@ const Contractshook = () => {
   }
 
   useEffect(() => {
+    setup();
     check();
     checkIfWalletIsConnected();
     getlp();
