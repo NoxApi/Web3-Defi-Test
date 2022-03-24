@@ -3,8 +3,9 @@ import '../../App.css';
 import abi from './../../components/utils/MiniChefV2.json'
 import abi2 from './../../components/utils/LoongTuu.json'
 import abi3 from './../../components/utils/EvermoonToken.json'
-import { useContext,useEffect } from 'react'
+import { useContext,useState,useEffect } from 'react'
 import { MainContext } from '../../App';
+
 
 const Contractshook = () => {
   //contract address
@@ -15,8 +16,8 @@ const Contractshook = () => {
   const TokenABI = abi2.abi;
   const evmABI = abi3.abi;
   const minichefABI = abi.abi;
-  //provider & signer
   const { ethereum } = window;
+// <<<<<<< Fuck-Up
   
   var provider = "";
   var signer = "";
@@ -32,6 +33,23 @@ const Contractshook = () => {
     var evm = new ethers.Contract(evmaddr,evmABI,signer);
     var farm = new ethers.Contract(contractAddress, minichefABI, signer);
     }
+// =======
+//   let provider = "";
+//   let signer = "";
+//   let token  = "";
+//   let evm = "";
+//   let farm = "";
+//   if (ethereum) {
+//     provider = new ethers.providers.Web3Provider(ethereum);
+//         signer = provider.getSigner();
+//         //all contracts 
+//         token = new ethers.Contract(pooladdr,TokenABI,signer);
+//         evm = new ethers.Contract(evmaddr,evmABI,signer);
+//         farm = new ethers.Contract(contractAddress, minichefABI, signer);
+//   }
+
+
+// >>>>>>> main
   //all context
   const {setIsMining,setIsFail,setIsSuccess,lp, setLp,amount,setAmount,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount} = useContext(MainContext)
   
@@ -52,6 +70,7 @@ const Contractshook = () => {
     setIsFail(true)
     setBluramount("blur(4px)")
   }
+// <<<<<<< Fuck-Up
   function setup(){
     if (ethereum){
       var provider = new ethers.providers.Web3Provider(ethereum);
@@ -60,6 +79,20 @@ const Contractshook = () => {
       var evm = new ethers.Contract(evmaddr,evmABI,signer);
       var farm = new ethers.Contract(contractAddress, minichefABI, signer);
       }
+// =======
+
+//   function setup() {
+//         //provider & signer
+//         provider = new ethers.providers.Web3Provider(ethereum);
+//         signer = provider.getSigner();
+//         //all contracts 
+//         token = new ethers.Contract(pooladdr,TokenABI,signer);
+//         evm = new ethers.Contract(evmaddr,evmABI,signer);
+//         farm = new ethers.Contract(contractAddress, minichefABI, signer);
+//         console.log("setup done")
+//         setRerender(rerender+1);
+
+// >>>>>>> main
   }
   //geting info (ex.currency)
   const getevm = async () => {
@@ -209,7 +242,9 @@ const Contractshook = () => {
         if (accounts.length !== 0) {
           const account = accounts[0];
           console.log("Found an authorized account:", account);
+          setup();
           setCurrentAccount(account);
+          setRerender(rerender+1);
         } else {
           console.log("No authorized account found")
           setCurrentAccount("")
