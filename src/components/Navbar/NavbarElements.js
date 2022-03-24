@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   width: 100vw;
   padding-top: 2.5vh;
   padding-bottom: 2.5vh;
-  font-size: 12px;
+  font-size: 16px;
   filter:{bluramount}
 `;
 

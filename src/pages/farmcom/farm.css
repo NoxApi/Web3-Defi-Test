@@ -1,7 +1,7 @@
 
 .Abackground {
     /*       */
-    height: 65vh ;
+    height: 37vw ;
     width: 70vw;
     margin-left: 15vw;
     margin-right: 15vw;
@@ -15,8 +15,9 @@
 
 .Aone {
     position : absolute;
-    width: 35vw;
-    margin-left: 6vw;
+    width: 40vw;
+    height: 30vw;
+    margin-left: 4vw;
 }
 
 
@@ -30,6 +31,8 @@
 @media (prefers-reduced-motion: no-preference) { 
     .Atwo {
         animation: Atwo-animated infinite 4s linear;
+        width: 22vw;
+        height: 22vw;
     }
 }
 
@@ -42,17 +45,18 @@
   }
 
 .Atwo {
-    margin-bottom: 300px;
-    margin-right: 12vw;
+  position: absolute;
+  z-index: 1000px;
+  margin-left: 4vw;
 }
 
 
   @keyframes Atwo-animated {
-    0%   {margin-bottom: 250px;}
-    20%  {margin-bottom: 300px;}
-    50%  {margin-bottom: 300px;}
-    80%  {margin-bottom: 300px;}
-    100% {margin-bottom: 250px;}
+    0%   {margin-bottom: 6vw;}
+    20%  {margin-bottom: 3vw;}
+    50%  {margin-bottom: 3vw;}
+    80%  {margin-bottom: 3vw;}
+    100% {margin-bottom: 6vw;}
   }
 
   .pickaxe{
