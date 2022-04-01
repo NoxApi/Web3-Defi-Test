@@ -6,22 +6,11 @@ import { MainContext } from '../App';
 export const SacredContext = React.createContext(null);
 const Sacred = () => {
   const {eggsamount,setEggsamount} = useContext(MainContext)
-
+  const {mint } = Sbcontracthook()
   const [eggs,setEggs] = useState([
     {id:0,num:"1231231",status:"new",level:0},
     {id:1,num:"2333322",status:"ready to claim",level:4},
     {id:2,num:"3445432",status:"",level:5},
-    {id:3,num:"2321222",status:"new",level:1},
-    {id:4,num:"2333232",status:"new",level:4},
-    {id:5,num:"2323111",status:"new",level:2},
-    {id:6,num:"2442421",status:"new",level:3},
-    {id:7,num:"21241241",status:"new",level:4},
-    {id:8,num:"24124124",status:"new",level:5},
-    {id:9,num:"243534435",status:"new",level:4},
-    {id:10,num:"2213123213",status:"new",level:0},
-    {id:11,num:"23423432",status:"new",level:2},
-
-
   ])
   return (
   <SacredContext.Provider    
