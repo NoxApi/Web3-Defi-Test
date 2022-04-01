@@ -158,6 +158,20 @@ const Contractshook = () => {
       Fail()
     }
   }
+  const approveEVM = async () => {
+    try{
+    const tx = await evm.approve(currentAccount,ethers.utils.parseUnits("500000000", 18))
+    console.log(tx.hash)
+    setIsMining("")
+    const waitfortx = await provider.waitForTransaction(tx.hash)
+    setIsMining("none")
+    setRerender(rerender+1)
+    }
+    catch (error) {
+      console.log(error)
+      Fail()
+    }
+  }
   const harvest = async () => {
     try{
       const farm = new ethers.Contract(contractAddress, minichefABI, signer);
@@ -297,7 +311,7 @@ const Contractshook = () => {
     getstakedevm();
     console.log("loop done")
   }, [rerender,currentAccount])
-    return {connectWallet ,harvest ,currentAccount,setAmount,appro,lp,amount,deposit,evmstaked,evmearn,withdraw,disconnectWallet}
+    return {connectWallet ,harvest ,currentAccount,setAmount,appro,lp,amount,deposit,evmstaked,evmearn,withdraw,disconnectWallet,approveEVM}
   };
   
   export default Contractshook;

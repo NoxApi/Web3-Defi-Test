@@ -1,9 +1,11 @@
 import React from 'react';
-import poolhook from "./secretpetcom/poolshook";
 import { Link,Outlet } from 'react-router-dom';
 import { useContext,useState } from 'react';
+import Sbcontracthook from './secretpetcom/sbcontracthook';
+import { MainContext } from '../App';
 export const SacredContext = React.createContext(null);
 const Sacred = () => {
+  const {eggsamount,setEggsamount} = useContext(MainContext)
 
   const [eggs,setEggs] = useState([
     {id:0,num:"1231231",status:"new",level:0},
@@ -22,10 +24,9 @@ const Sacred = () => {
 
   ])
   return (
-  <SacredContext.Provider 
-      
+  <SacredContext.Provider    
         value={{
-        eggs,setEggs
+        eggs,setEggs,eggsamount,setEggsamount
         }}>
     <div style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)" ,height:"1500px",justifyContent:'center',textAlign:"center",alignContent:'center',alignItems:"center",alignSelf : "center" }}>
        <div class=" h-[10vh] flex justify-center items-end rounded-md">

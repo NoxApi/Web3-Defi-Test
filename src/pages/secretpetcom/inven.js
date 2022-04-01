@@ -2,7 +2,9 @@ import eggpic from "./../../images/egg.svg"
 import { SacredContext } from "../Sacredpet";
 import { Link } from "react-router-dom";
 import { useState,useContext } from "react";
+import Sbcontracthook from "./sbcontracthook";
 const Inven = () => {
+  const {mint } = Sbcontracthook()
   const [currentpage,setCurrentpage] = useState(1)
   const {eggs,setEggs } = useContext(SacredContext)
   const numpage=[];

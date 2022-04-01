@@ -15,7 +15,7 @@ import Contractshook from '../../pages/farmcom/contractshook';
 
 const Navbar = () => {
   const {currentAccount,evma,setIsMobileMenu} = useContext(MainContext)
-  const {connectWallet} = Contractshook()
+  const {connectWallet,approveEVM} = Contractshook()
 
   useEffect(() => {
     console.log("Navbar render")
@@ -69,7 +69,7 @@ const Navbar = () => {
               <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-[1vw] py-[0.6vh] px-[1vw] bp1:text-[0.85vw]" >{parseFloat(evma).toFixed(3) + " EVM"}</p>
               <p class="text-white nav1:text-[0.8vw] " onClick={() => {navigator.clipboard.writeText(currentAccount)}}>{currentAccount.substring(0, 17)+"..."}</p>
             </div>
-          <img  src={require('../../images/benz.PNG')} alt='logo' class="w-[3.5vw] h-[3.5vw] rounded-full" />
+          <img onClick={approveEVM} src={require('../../images/benz.PNG')} alt='logo' class="w-[3.5vw] h-[3.5vw] rounded-full" />
           </div>
           )}
         </div> 

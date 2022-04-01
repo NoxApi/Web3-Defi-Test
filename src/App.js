@@ -35,6 +35,7 @@ function App() {
   const [isMining,setIsMining] = useState("none")
   const [rerender,setRerender]=useState(0)
   const [isMobileMenu,setIsMobileMenu] = useState(false)
+  const [eggsamount,setEggsamount] = useState(0)
 
   return (
     <Router>
@@ -45,7 +46,7 @@ function App() {
         lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
-        ,isMobileMenu,setIsMobileMenu}}>
+        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount}}>
 
         <div class ="w-full h-[90vh]">
           <Navbar />

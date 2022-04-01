@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./../../pages/farmcom/farm.css"
 import { useContext } from 'react'
@@ -9,11 +9,12 @@ import Contractshook from '../../pages/farmcom/contractshook';
 const Mobilenav = () => {
 
     const {isMobileMenu,currentAccount,evma} = useContext(MainContext)
+    const [isdisable,setIsdisable] = useState(true)
     const {connectWallet} = Contractshook()
   return (
     <>
      
-      <div style={{ background: "#121624",height:"100vh",width:"22vw",position:'fixed',top:"2px" ,right:"0px",zIndex:"10px",borderColor:"#F9D390",borderWidth:"2px",borderRadius:"1rem",display:isMobileMenu}}>
+      <div style={{ background: "#121624",height:"100vh",width:"22vw",position:'fixed',top:"2px" ,right:"0px",zIndex:"10px",borderColor:"#F9D390",borderWidth:"2px",borderRadius:"1rem",display:"none"}}>
         {isMobileMenu!=="none"&&<div class="flex flex-col ">
             <div class=" flex items-center self-center w-[] mt-[1vw]"  > 
             {!currentAccount && (

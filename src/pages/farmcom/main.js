@@ -21,7 +21,7 @@ const Farmmain = (props) => {
 return(
     <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"100vh",width:"100vw", filter:bluramount }}>
       {/* under Navbar */}
-    <div class="flex  items-center  h-[7vw]  py-[4vw] mx-[15vw] justify-between MBH:mx-[0vw]">
+    <div class="flex  items-center  h-[4vw]  py-[3vw] mx-[15vw] justify-between MBH:mx-[0vw]">
       <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2.5vw] MBH:text-[3vw] text-center font-serif">
         EVERMOON FARM
       </div>
@@ -32,7 +32,7 @@ return(
       {/* Farm Card */}
     <div class="MBH:hidden">
     <div className="Abackground">
-      <div class="grid grid-cols-4 gap-[2vw] h-[37vw] w-[70vw] pr-[2.5vw] " >
+      <div class="grid grid-cols-4 gap-[2vw] h-[30vw] w-[70vw] pr-[2.5vw] " >
         
         <div class="row-span-4 col-span-2 w-[100%] h-[100%] flex items-center justify-center" >
         <img src={ayla1} alt='logo' className ="Aone" />
