@@ -36,6 +36,7 @@ function App() {
   const [rerender,setRerender]=useState(0)
   const [isMobileMenu,setIsMobileMenu] = useState(false)
   const [eggsamount,setEggsamount] = useState(0)
+  const [eggowned,setEggowned] = useState(0)
 
   return (
     <Router>
@@ -46,7 +47,7 @@ function App() {
         lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
-        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount}}>
+        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned}}>
 
         <div class ="w-full h-[90vh]">
           <Navbar />

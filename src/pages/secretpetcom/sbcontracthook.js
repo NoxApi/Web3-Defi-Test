@@ -35,7 +35,7 @@ const Sbcontracthook = () => {
   const SB = new ethers.Contract(sacredbeastaddr, SBABI, signer);
   const evm = new ethers.Contract(evmaddr, evmABI, signer);
   //all context
-  const {setIsMining,setIsFail,setIsSuccess,lp, setLp,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount,eggsamount} = useContext(MainContext)
+  const {eggowned,setEggowned,setIsMining,setIsFail,setIsSuccess,lp, setLp,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount,eggsamount} = useContext(MainContext)
   function Success() {
     setIsSuccess(true)
     setBluramount("blur(4px)")
@@ -53,14 +53,24 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-  const checkbalance = async () => {
+  const howmanyegg = async () => {
     try {
-        const tx = await SB.balanceOf(currentAccount);
-       console.log(tx)
-       const tx2 = await SB.totalSupply();
-       console.log(tx2)
-       const tx3 = await SB.tokenOfOwnerByIndex(currentAccount,0);
-       console.log(tx3)
+        const eggs = await SB.balanceOf(currentAccount);
+        const formateggs = ethers.utils.formatUnits(eggs);
+        const formateggs2= formateggs*(10**18)
+        console.log(formateggs2);
+        setEggowned(formateggs2);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function geteggidbyindex(index) {
+    try {
+      const TokenID = await SB.tokenOfOwnerByIndex(currentAccount,index);
+      const formatTokenID = ethers.utils.formatUnits(TokenID);
+      const formatTokenID2 = formatTokenID*(10**18)
+      return formatTokenID2;
     } catch (error) {
       console.log(error)
     }
@@ -108,10 +118,10 @@ const Sbcontracthook = () => {
   }    
 
   useEffect(() => {
+    howmanyegg();
     console.log("loop done")
-    checkbalance();
   }, [rerender,currentAccount])
-    return {mint}
+    return {mint,howmanyegg,geteggidbyindex}
   };
   
   export default Sbcontracthook;
