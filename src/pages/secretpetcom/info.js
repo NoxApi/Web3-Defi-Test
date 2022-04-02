@@ -4,10 +4,19 @@ import egg from "./../../images/egg.svg"
 import { SacredContext } from '../Sacredpet';
 import { useState,useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { forEach } from 'mathjs';
 const Info = () => {
+  var eggindex =[]
   const { id } = useParams()
-  const {eggs,setEggs } = useContext(SacredContext)
-  const thisegg=eggs[id];
+  const {egggs } = useContext(SacredContext)
+
+  for(const name of egggs){
+    const x = name.name
+    eggindex.push((x.split("#"))[1])
+  }
+  console.log(eggindex)
+  const index = eggindex.indexOf(id)
+  const thisegg=egggs[index];
   return (
   <> 
    <div class="absolute ml-[15vw] text-white">
@@ -18,17 +27,17 @@ const Info = () => {
         <img src={egg} alt='logo' class="h-[20vw] w-[15vw] self-center mt-[5px]"  />
         <div class="self-center origin-center flex items-center my-[0.5vw]">
           <div class="bg-[#181D31] rotate-45 border-2">
-            <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.55vw] py-[0.1vw] text-center rotate-[315deg] text-[1vw]">{thisegg.level}</p>
+            <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.55vw] py-[0.1vw] text-center rotate-[315deg] text-[1vw]">{thisegg.evolForm}</p>
           </div>
           <div class="self-center origin-center flex flex-col ml-[0.5vw]">
             <p class="text-white text-[0.9vw]  text-left   ">Sacred Egg</p>
-            <p class="text-white text-left  ">{"#"+thisegg.num}</p>
+            <p class="text-white text-left  ">{"#"}</p>
           </div>
           
         </div>
         <div class="self-center origin-center flex justify-between w-[21vw]">
-            <button class="text-black  text-left mt-[1vw] bg-[#F9D390] py-[0.4vw] px-[3.5vw] border-2 rounded-md">RECLAM</button>
-            <button class="text-black  text-left mt-[1vw]  bg-[#F9D390] py-[0.4vw] px-[4vw] border-2 rounded-md">{"FEED "}</button>
+            <button class="text-black  text-left mt-[1vw] bg-[#F9D390] py-[0.4vw]  border-2 rounded-md text-[1.5vw]">RECLAM</button>
+            <button class="text-black  text-left mt-[1vw]  bg-[#F9D390] py-[0.4vw] border-2 rounded-md text-[1.5vw]">{"FEED "}</button>
         </div>
         <div class="flex self-center w-[30vw] mt-[3vw] flex-col">
           <p class="text-left text-white text-[0.9vw]">Amount</p>

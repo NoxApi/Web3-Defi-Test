@@ -58,7 +58,6 @@ const Sbcontracthook = () => {
         const eggs = await SB.balanceOf(currentAccount);
         const formateggs = ethers.utils.formatUnits(eggs);
         const formateggs2= formateggs*(10**18)
-        console.log(formateggs2);
         setEggowned(formateggs2);
     } catch (error) {
       console.log(error)
@@ -75,7 +74,15 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-
+  
+  async function tokenURI(id) {
+    try {
+      const TokenID = await SB.tokenURI(id);
+      return TokenID;
+    } catch (error) {
+      console.log(error)
+    }
+  }
   //wallet related
   const check = async () => {
     if (currentAccount.length == 0) {
@@ -121,7 +128,7 @@ const Sbcontracthook = () => {
     howmanyegg();
     console.log("loop done")
   }, [rerender,currentAccount])
-    return {mint,howmanyegg,geteggidbyindex}
+    return {mint,howmanyegg,geteggidbyindex,tokenURI}
   };
   
   export default Sbcontracthook;
