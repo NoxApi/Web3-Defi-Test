@@ -11,6 +11,16 @@ export const Nav = styled.nav`
   padding-bottom: 2.5vh;
   font-size: 16px;
   filter:{bluramount}
+  @media screen and (max-width: 1535px) {
+    height: 6.3vw;
+    padding-top: 0.01vw;
+    
+  }
+  @media screen and (max-width: 1535px) {
+    height: 6.3vw;
+    padding-top: 0.01vw;
+    
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -45,8 +55,8 @@ export const NavMenu = styled.div`
   width:70vw;
   margin-left:15vw;
   margin-right:15vw;
-  @media screen and (max-width: 1345px) {
-    font-size: 0.65vw;
+  @media screen and (max-width: 1535px) {
+    display: none;
   }
 `;
 ;

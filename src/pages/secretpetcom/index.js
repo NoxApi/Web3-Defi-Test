@@ -1,9 +1,13 @@
 import React from 'react';
 import egg from "./../../images/egg.svg"
-import { useState } from 'react';
+import { useState,useContext } from 'react';
+import { SacredContext } from '../Sacredpet';
+import Sbcontracthook from './sbcontracthook';
+
 const Mintpet = () => {
-  const [amount,setAmount] = useState(0)
-  const price= amount*10
+  const {mint } = Sbcontracthook()
+  const {eggsamount,setEggsamount} = useContext(SacredContext)
+  const price= eggsamount*10
   return (
   <>
 
@@ -27,13 +31,13 @@ const Mintpet = () => {
           </div>
           <div class="w-[100%]">
             <div class="flex justify-between ">
-              <button onClick={(e)=>setAmount(amount-1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">-</button>
+              <button onClick={(e)=>setEggsamount(eggsamount-1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">-</button>
               <input   class="bg-[#0C0F1A] text-white h-[50px] w-[70%] rounded-lg border-2 text-center"
                     type="number"
-                    value={amount}
-                    onChange={(e)=> setAmount(e.target.value)}
+                    value={eggsamount}
+                    onChange={(e)=> setEggsamount(e.target.value)}
                     />
-              <button onClick={(e)=>setAmount(amount+1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">+</button>
+              <button onClick={(e)=>setEggsamount(parseInt(eggsamount)+1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">+</button>
             </div>
             <div class="flex justify-between mt-[30px]">
               <p class="text-[0.75vw] text-[#c2c2c2]">Your balance</p>
@@ -52,9 +56,11 @@ const Mintpet = () => {
               <p class="text-[0.70vw] text-[#c2c2c2]">{"$ "+200.00}</p>
             </div>              
           </div>
-          <button class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
+
+          <button onClick={mint} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
             <p class="font-bold">mint</p>
           </button>
+
         </div> 
       </div>  
   </>

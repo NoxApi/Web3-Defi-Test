@@ -15,6 +15,8 @@ import SP from './pages/Sacredpet';
 import Mintpet from './pages/secretpetcom';
 import Inven from './pages/secretpetcom/inven';
 import Info from './pages/secretpetcom/info';
+import Mobilenav from './components/Navbar/mobilenavmenu';
+
 export const MainContext = React.createContext(null);
 
 function App() {
@@ -32,6 +34,9 @@ function App() {
   const [isFail,setIsFail] = useState(false)
   const [isMining,setIsMining] = useState("none")
   const [rerender,setRerender]=useState(0)
+  const [isMobileMenu,setIsMobileMenu] = useState(false)
+  const [eggsamount,setEggsamount] = useState(0)
+  const [eggowned,setEggowned] = useState(0)
 
   return (
     <Router>
@@ -42,7 +47,7 @@ function App() {
         lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
-        }}>
+        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned}}>
 
         <div class ="w-full h-[90vh]">
           <Navbar />
@@ -61,6 +66,7 @@ function App() {
             </Route>
           </Routes>
         </div>
+        <Mobilenav/>
         <SuccessModal/>
         <MiningModal/>
         <FailModal/>
