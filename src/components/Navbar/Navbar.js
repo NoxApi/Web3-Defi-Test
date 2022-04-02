@@ -75,9 +75,9 @@ const Navbar = () => {
         </div> 
 
         </NavMenu>
-        <div class="flex justify-between  w-[100vw] mx-[] h-[7vw] TL:hidden items-center MB:mx-[15vw] MB:w-[70vw]">
+        <div class="flex justify-between  w-[100vw] mx-[4vw] h-[7vw] TL:hidden items-center MB:mx-[15vw] MB:w-[70vw] ">
           <img src={evermoon1} alt='logo' class=" h-[3.5vw]" />
-          <div onClick={setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer">
+          <div onClick={(e)=> setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer">
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>

@@ -28,9 +28,7 @@ const Inven = () => {
       eggscounter.push(index)
       index++
     } 
-    console.log(eggscounter)
     for(const element of eggscounter){
-        console.log(element)
         var x = await geteggidbyindex(element)
         var y = await tokenURI(x)
         var z = String(y)
@@ -44,6 +42,7 @@ const Inven = () => {
         }
       }
       setFetchingeggs(false)
+      console.log(egggs)
 }
 useEffect(() => {
   if (fetchingeggs===false){
@@ -63,36 +62,17 @@ useEffect(() => {
               <p class="text-[0.65vw] text-[#F9D390]">{"Reset"}</p>
             </div>  
 
-            <div class="border-b-2 border-[#CA9E51] mt-[20px] mx-[10px]" ></div>
-            <div class="flex mt-[20px] justify-between mx-[1vw]">
-              <p class="text-[0.80vw] text-[#c2c2c2]">Breed</p>
-            </div>
-            <div className="topping flex ">
-              <input class="mt-[6px] ml-[1vw]" type="checkbox" id="topping" name="topping" value="Paneer"/>
-              <p class="text-[0.78vw] text-[#c2c2c2] ml-[5px]">Lion</p>
-              <input class="mt-[6px] ml-[4vw]" type="checkbox" id="topping" name="topping" value="Paneer"/>
-              <p class="text-[0.78vw] text-[#c2c2c2] ml-[5px]">Cat</p>
-            </div>
-            <div className="topping flex ">
-              <input class="mt-[6px] ml-[1vw]" type="checkbox" id="topping" name="topping" value="Paneer"/>
-              <p class="text-[0.78vw] text-[#c2c2c2] ml-[5px]">Bear</p>
-              <input class="mt-[6px] ml-[4vw]" type="checkbox" id="topping" name="topping" value="Paneer"/>
-              <p class="text-[0.78vw] text-[#c2c2c2] ml-[5px]">Otter</p>
-            </div>
-            <div className="topping flex ">
-              <input class="mt-[6px] ml-[1vw]" type="checkbox" id="topping" name="topping" value="Paneer"/>
-              <p class="text-[0.78vw] text-[#c2c2c2] ml-[5px]">Rabbit</p>
-            </div>
+            
             <div class="border-b-2 border-[#CA9E51] mt-[20px] mx-[10px]" ></div>
             <div class="flex mt-[20px] justify-between mx-[1vw]">
               <p class="text-[0.80vw] text-[#c2c2c2]">Level</p>
             </div>
             <div class="flex mt-[20px] mx-[1vw] justify-between ">
-              <div class="bg-[#161E2F] w-[5vw] h-[40px] flex justify-start items-center border-2 border-[#CA9E51]"  >
+              <div class="bg-[#161E2F] w-[5vw] h-[2.2vw] flex justify-start items-center border-[0.1vw] rounded-[10%] border-[#CA9E51]"  >
                 <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{0}</p>
               </div>
               <p class="text-[0.95vw] text-[#c2c2c2]">{"-"}</p>
-              <div class="bg-[#161E2F] w-[5vw] h-[40px] flex justify-start items-center border-2 border-[#CA9E51]">
+              <div class="bg-[#161E2F] w-[5vw] h-[2.2vw] flex justify-start items-center border-[0.1vw] rounded-[10%] border-[#CA9E51]">
                 <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{5}</p>
               </div>
             </div>  
@@ -102,22 +82,22 @@ useEffect(() => {
           <div class="flex justify-between items-center">
             <p class="text-[1.1vw] text-[#c2c2c2]">{eggowned+" Result"}</p>
             <div class="flex  ">
-              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-2 border-[#CA9E51] mr-[3.75vw]"  >
+              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
                 <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
               </div>
-              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-2 border-[#CA9E51] mr-[3.75vw]"  >
-                <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Filter"}</p>
+              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
+                <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
               </div>
             </div>
           </div>
           {!fetchingeggs&&<div class="grid grid-cols-4 gap-[1vw] h-[40vw] w-[54vw] mt-[20px] " >
             {currentpageitems.map((egg) => (
           <Link key={egg.name} to={"/SP/Info/"+((egg.name).split("#"))[1]} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
-            <div class="bg-gradient-to-b from-transparent to-[#EEC377]  border-[1px] border-[] flex flex-col bg-opacity-10">
+            <div class="bg-gradient-to-b from-transparent via-transparent to-[#EEC377]  border-[1px] border-[] flex flex-col ">
               <div class="flex justify-between items-center">
-                <p class="  text-left px-[0.3vw] py-[0.1vw] bg-[#fe0000] mt-[0.5vw] ml-[0.2vw] rounded-md text-white text-[0.7vw]"  >{}</p>
+                <p class="  text-left px-[0.3vw] py-[0.1vw] bg-[#fe0000] mt-[0.5vw] ml-[0.2vw] rounded-md text-white text-[0.7vw]"  >{"new"}</p>
                 <div class="bg-[#181D31] rotate-45 border-2  flex align-middle mt-[0.7vw] mr-[0.6vw]">
-                  <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.48vw] py-[0.04vw] text-center rotate-[315deg] text-[1vw] font-bold relative">{egg.evolForm}</p>
+                  <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.48vw] py-[0.04vw] text-center rotate-[315deg] text-[1vw] font-bold relative">{(egg.evolForm)-1}</p>
                 </div>
               </div>
               <img src={eggpic} alt='logo' class="h-[11vw] w-[8vw] mb-[0.5vw] self-center" />
@@ -126,9 +106,9 @@ useEffect(() => {
              <p class="text-left text-white text-[0.5vw]" >{"#"+((egg.name).split("#"))[1]}</p>
              <div class="flex justify-between mt-[0.5vw]">
                <p class="text-white text-[0.9vw] ">Amount</p>
-               <p class="text-[#F9D390] text-[0.9vw]">{200 + " EVM"}</p>
+               <p class="text-[#F9D390] text-[0.9vw]">{200+" EVM"}</p>
              </div>
-             <p class="text-right text-white text-[0.5vw]" >{"$ "+1000000000}</p>
+             <p class="text-right text-[#C2C2C2] text-[0.5vw]" >{"$ "+1000000000}</p>
           </Link>
             ))}
           </div>}

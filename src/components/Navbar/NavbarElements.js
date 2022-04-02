@@ -12,9 +12,14 @@ export const Nav = styled.nav`
   font-size: 16px;
   filter:{bluramount}
   @media screen and (max-width: 1535px) {
-    height: 8vw;
-    padding-top: 0.5vw;
-  padding-bottom: 0.5vw;
+    height: 6.3vw;
+    padding-top: 0.01vw;
+    
+  }
+  @media screen and (max-width: 1535px) {
+    height: 6.3vw;
+    padding-top: 0.01vw;
+    
   }
 `;
 

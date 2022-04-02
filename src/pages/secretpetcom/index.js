@@ -37,7 +37,7 @@ const Mintpet = () => {
                     value={eggsamount}
                     onChange={(e)=> setEggsamount(e.target.value)}
                     />
-              <button onClick={(e)=>setEggsamount(eggsamount+1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">+</button>
+              <button onClick={(e)=>setEggsamount(parseInt(eggsamount)+1)} class="bg-[#1A2035] text-white h-[50px] w-[12%] rounded-lg border-2 text-center">+</button>
             </div>
             <div class="flex justify-between mt-[30px]">
               <p class="text-[0.75vw] text-[#c2c2c2]">Your balance</p>

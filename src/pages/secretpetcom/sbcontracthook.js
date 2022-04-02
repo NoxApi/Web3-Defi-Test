@@ -83,7 +83,19 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
+
+
+  // const lockedinfo = async () => {
+  //   try {
+  //     const info = await SB.nftLocks(0,0);
+  //     console.log(info)
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   //wallet related
+
   const check = async () => {
     if (currentAccount.length == 0) {
       try{
