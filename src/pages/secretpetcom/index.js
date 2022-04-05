@@ -5,8 +5,7 @@ import { SacredContext } from '../Sacredpet';
 import Sbcontracthook from './sbcontracthook';
 
 const Mintpet = () => {
-  const {mint } = Sbcontracthook()
-  const {eggsamount,setEggsamount} = useContext(SacredContext)
+  const {eggsamount,setEggsamount,mint} = useContext(SacredContext)
   const price= eggsamount*10
   return (
   <>
@@ -57,7 +56,7 @@ const Mintpet = () => {
             </div>              
           </div>
 
-          <button onClick={mint} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
+          <button onClick={(e)=>mint(eggsamount)} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
             <p class="font-bold">mint</p>
           </button>
 

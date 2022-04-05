@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useState,useContext,useEffect} from "react";
 import Sbcontracthook from "./sbcontracthook";
 const Inven = () => {
-  var base64 = require('base-64');
   const {mint,geteggidbyindex,tokenURI } = Sbcontracthook()
   const [currentpage,setCurrentpage] = useState(1)
   const {egggs,fetchingeggs,setFetchingeggs } = useContext(SacredContext)
@@ -19,37 +18,8 @@ const Inven = () => {
     numpage.push(i)
   }
 
-  const eggsloop = async () => {
-    setFetchingeggs(true)
-    var index =0
-    var eggscounter =[]
-    
-    while (eggscounter.length != eggowned){
-      eggscounter.push(index)
-      index++
-    } 
-    for(const element of eggscounter){
-        var x = await geteggidbyindex(element)
-        var y = await tokenURI(x)
-        var z = String(y)
-        var c = z.split(",")
-        var v = JSON.parse(base64.decode(c[1]));
-          const newegg = egggs.map((x) =>{
-            return x.name
-          })
-        if (!(newegg.includes(v["name"]))){
-            egggs.push(v)
-        }
-      }
-      setFetchingeggs(false)
-      console.log(egggs)
-}
+  
 useEffect(() => {
-  if (fetchingeggs===false){
-    if (eggowned!=egggs.length){
-    eggsloop()
-    }
-}
   console.log("Inventory Rerender")
 }, [])
   return (
@@ -100,7 +70,7 @@ useEffect(() => {
                   <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.48vw] py-[0.04vw] text-center rotate-[315deg] text-[1vw] font-bold relative">{(egg.evolForm)-1}</p>
                 </div>
               </div>
-              <img src={eggpic} alt='logo' class="h-[11vw] w-[8vw] mb-[0.5vw] self-center" />
+              <img src={egg.image} alt='logo' class="h-[11vw] w-[8vw] mb-[0.5vw] self-center" />
              </div>
              <p class="text-left text-white text-[0.9vw] mt-[0.5vw]" >{((egg.name).split("#"))[0]}</p>
              <p class="text-left text-white text-[0.5vw]" >{"#"+((egg.name).split("#"))[1]}</p>

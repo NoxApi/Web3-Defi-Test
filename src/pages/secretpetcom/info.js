@@ -2,21 +2,30 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import egg from "./../../images/egg.svg"
 import { SacredContext } from '../Sacredpet';
-import { useState,useContext } from 'react';
+import { useState,useContext,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { forEach } from 'mathjs';
+import { ethers } from 'ethers';
 const Info = () => {
   var eggindex =[]
   const { id } = useParams()
-  const {egggs } = useContext(SacredContext)
-
+  const {egggs,feed,rdyreward,lockedinfo,reclaim } = useContext(SacredContext)
+  const [rdyrewardamount,setRdyrewardamounts] = useState(0)
+  async function setrdyreward() {
+  setRdyrewardamounts(await rdyreward(id))
+  }
   for(const name of egggs){
     const x = name.name
     eggindex.push((x.split("#"))[1])
   }
-  console.log(eggindex)
   const index = eggindex.indexOf(id)
   const thisegg=egggs[index];
+  useEffect(() => {
+    console.log(thisegg)
+    setrdyreward();
+    lockedinfo(id);
+  }, [])
+
   return (
   <> 
    <div class="absolute ml-[15vw] text-white">
@@ -36,8 +45,8 @@ const Info = () => {
           
         </div>
         <div class="self-center origin-center flex justify-between w-[20.3vw]">
-            <button class="text-black  border-black mt-[1vw] bg-[#F9D390] py-[0.2vw]  border-2 rounded-md text-[1vw] w-[10vw] text-center">RECLAM</button>
-            <button class="text-black  border-black mt-[1vw]  bg-[#F9D390] py-[0.2vw] border-2 rounded-md text-[1vw] w-[10vw] text-center">{"FEED "}</button>
+            <button onClick={(e)=>reclaim(id)}class="text-black  border-black mt-[1vw] bg-[#F9D390] py-[0.2vw]  border-2 rounded-md text-[1vw] w-[10vw] text-center">RECLAM</button>
+            <button onClick={(e)=>feed(id)} class="text-black  border-black mt-[1vw]  bg-[#F9D390] py-[0.2vw] border-2 rounded-md text-[1vw] w-[10vw] text-center">{"FEED "}</button>
         </div>
         <div class="flex self-center w-[30vw] mt-[3vw] flex-col">
           <p class="text-left text-white text-[0.9vw]">Amount</p>
@@ -48,7 +57,7 @@ const Info = () => {
             </div>
             <div class="flex justify-between bg-[#181D31] w-[14.8vw] py-[0.8vw] border-[1px] rounded-lg px-[0.3vw]">
               <p class="text-left w-[12vw] text-white text-[1vw]">Ready To Claim</p>
-              <p class="text-right w-[12vw] text-white text-[1vw]">{"28.00  EVM"}</p>
+              <p class="text-right w-[12vw] text-white text-[1vw]">{rdyrewardamount+ " EVM"}</p>
             </div>
             
           </div> 
@@ -57,8 +66,9 @@ const Info = () => {
         <div class="flex self-center w-[30vw] mt-[3vw] flex-col">
           <p class="text-left text-white text-[0.9vw]">Feeded List</p>
           <div class="flex justify-start flex-col">
-            <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]">
-                
+
+        {/* ready to map */}
+            <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]">       
               <div class="text-left w-[12vw] text-white flex flex-col justify-start  border-l-4 border-[#FFD54F] pl-[0.8vw] ml-[0.5vw]">
                 <p class="text-[0.5vw]">feeded amount</p>
                 <p class="text-[1vw]">{22.01+" EVM"}</p>
@@ -73,7 +83,7 @@ const Info = () => {
                   <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
                 </div>
                 <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">Feeded Date</p>
+                  <p class="text-[0.5vw]">Ended Date</p>
                   <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
                 </div>
                 <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
@@ -82,82 +92,9 @@ const Info = () => {
                 </div>
               </div>
             </div>
-            <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]">
-                
-              <div class="text-left w-[12vw] text-white flex flex-col justify-start  border-l-4 border-[#FFD54F] pl-[0.8vw] ml-[0.5vw]">
-                <p class="text-[0.5vw]">feeded amount</p>
-                <p class="text-[1vw]">{22.01+" EVM"}</p>
-              </div>
-              <div class="flex justify-between w-[20vw]">
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw] ">EXP Gain</p>
-                  <p class="text-[0.65vw] mt-[0.2vw]">{200}</p>
-                </div>
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">Feeded Date</p>
-                  <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                </div>
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">Feeded Date</p>
-                  <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                </div>
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">status</p>
-                  <p class="text-[0.65vw] mt-[0.2vw]">{"Digesting"}</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]">
-                
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start  border-l-4 border-[#FFD54F] pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">feeded amount</p>
-                  <p class="text-[1vw]">{22.01+" EVM"}</p>
-                </div>
-                <div class="flex justify-between w-[20vw]">
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw] ">EXP Gain</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{200}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">Feeded Date</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">Feeded Date</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">status</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"Digesting"}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]">
-                
-                <div class="text-left w-[12vw] text-white flex flex-col justify-start  border-l-4 border-[#FFD54F] pl-[0.8vw] ml-[0.5vw]">
-                  <p class="text-[0.5vw]">feeded amount</p>
-                  <p class="text-[1vw]">{22.01+" EVM"}</p>
-                </div>
-                <div class="flex justify-between w-[20vw]">
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw] ">EXP Gain</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{200}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">Feeded Date</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">Feeded Date</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"07/02/1999"}</p>
-                  </div>
-                  <div class="text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.5vw]">
-                    <p class="text-[0.5vw]">status</p>
-                    <p class="text-[0.65vw] mt-[0.2vw]">{"Digesting"}</p>
-                  </div>
-                </div>
-              </div>
+            {/* ready to map */}
             
+           
           </div> 
         </div>
 
