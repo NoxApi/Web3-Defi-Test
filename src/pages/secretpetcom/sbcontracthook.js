@@ -12,7 +12,7 @@ import { SacredContext } from '../Sacredpet';
 
 const Sbcontracthook = () => {
   //contract address
-  const sacredbeastaddr = "0xFd32D87F7bb527c98f95E0cb5825C51B6dE25552";
+  const sacredbeastaddr = "0x667c26ce26960eE07f774F361c2F899D2CbA69BD";
   const contractAddress = "0x01b6AABf4c744a2c1718067BEa1bcaB1312ed42B";
   const pooladdr = "0xE7B2c20Ace3300724A8E612ac18B2ACB8259426B";
   const evmaddr= "0xf91375fbf40d920c31016E1473c6D44F334Af13F";
@@ -40,10 +40,23 @@ const Sbcontracthook = () => {
     setIsSuccess(true)
     setBluramount("blur(4px)")
   }
-
-  const mint = async () => {
+  async function mint(amount) {
     try {
-        const tx = await SB.mintBeast(eggsamount);
+      const tx = await SB.mintBeast(amount);
+      console.log(tx)
+      setIsMining("")
+      const waitfortx = await provider.waitForTransaction(tx.hash)
+      setRerender(rerender+1)
+      setIsMining("none")
+      Success()
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const editlock = async () => {
+    try {
+        const tx = await SB.SetLockChoice(0,ethers.utils.parseUnits("86400", 18),2,0);
         setIsMining("")
         const waitfortx = await provider.waitForTransaction(tx.hash)
         setRerender(rerender+1)
@@ -59,6 +72,20 @@ const Sbcontracthook = () => {
         const formateggs = ethers.utils.formatUnits(eggs);
         const formateggs2= formateggs*(10**18)
         setEggowned(formateggs2);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const supplyinfo = async () => {
+    try {
+        const ls = await SB.lockedSupply()
+        const ts = await SB.totalERC20Supply()
+        const lc = await SB.lockChoices(0)
+        const x = ethers.utils.formatUnits(ls)
+        const y = ethers.utils.formatUnits(ts)
+        console.log("lock supply = "+x);
+        console.log("total ERC20 = "+y);
+        console.log(lc);
     } catch (error) {
       console.log(error)
     }
@@ -84,16 +111,74 @@ const Sbcontracthook = () => {
     }
   }
 
+  async function feed(id) {
+    try {
+      const info = await SB.feed(id,ethers.utils.parseUnits("100", 18),0);
+      console.log(info)
+      setIsMining("")
+      const waitfortx = await provider.waitForTransaction(info.hash)
+      setRerender(rerender+1)
+      setIsMining("none")
+      Success()
 
-  // const lockedinfo = async () => {
-  //   try {
-  //     const info = await SB.nftLocks(0,0);
-  //     console.log(info)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  async function reclaim(id) {
+    try {
+      const info = await SB.reclaimExpiredLocks(id);
+      console.log(info)
+      setIsMining("")
+      const waitfortx = await provider.waitForTransaction(info.hash)
+      setRerender(rerender+1)
+      setIsMining("none")
+      Success()
 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function rdyreward(id) {
+    try {
+      const info = await SB.rewards(id,evmaddr);
+      const x = ethers.utils.formatUnits(info)
+      console.log(x)
+      console.log(await SB.getRewardForDuration(evmaddr))
+      return x;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  async function lockedinfo(id) {
+     try {
+       const info = await SB.nftLocks(id,0);
+       console.log(info)
+       const x = ethers.utils.formatUnits(info[0])
+       const y = info[1]
+       const z = info[2]
+       const c = ethers.utils.formatUnits(z.duration)
+       console.log("amount"+x)
+       console.log(y)
+       console.log(c)
+
+     } catch (error) {
+       console.log(error)
+     }
+   }
+   const locked = async () => {
+    try {
+      const info = await SB.nft(0);
+      console.log(info)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   //wallet related
 
   const check = async () => {
@@ -138,9 +223,10 @@ const Sbcontracthook = () => {
 
   useEffect(() => {
     howmanyegg();
+    supplyinfo();
     console.log("loop done")
   }, [rerender,currentAccount])
-    return {mint,howmanyegg,geteggidbyindex,tokenURI}
+    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim}
   };
   
   export default Sbcontracthook;

