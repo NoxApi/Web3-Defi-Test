@@ -5,3 +5,12 @@
 .mainpage {
     filter: blur(8px);
 }
+.bg {
+    background-image: url('./bgn.png');
+    background-size: 100% auto;
+  }
+.bginven{
+    background-image: linear-gradient(to bottom,transparent 30%,rgba(202,158,81,0.3) 100%);
+    opacity: 1;
+
+}

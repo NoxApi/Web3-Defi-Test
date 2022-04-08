@@ -12,7 +12,7 @@ import { SacredContext } from '../Sacredpet';
 
 const Sbcontracthook = () => {
   //contract address
-  const sacredbeastaddr = "0x667c26ce26960eE07f774F361c2F899D2CbA69BD";
+  const sacredbeastaddr = "0xF0Ce8B8158bA00F923C29eE4e1290d3E5d4D61fA";
   const contractAddress = "0x01b6AABf4c744a2c1718067BEa1bcaB1312ed42B";
   const pooladdr = "0xE7B2c20Ace3300724A8E612ac18B2ACB8259426B";
   const evmaddr= "0xf91375fbf40d920c31016E1473c6D44F334Af13F";
@@ -27,6 +27,8 @@ const Sbcontracthook = () => {
   
   //provider & signer
   const { ethereum } = window;
+
+
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = provider.getSigner();
   //all contracts 
@@ -35,10 +37,13 @@ const Sbcontracthook = () => {
   const SB = new ethers.Contract(sacredbeastaddr, SBABI, signer);
   const evm = new ethers.Contract(evmaddr, evmABI, signer);
   //all context
-  const {eggowned,setEggowned,setIsMining,setIsFail,setIsSuccess,lp, setLp,currentAccount,setCurrentAccount,setEvma,setIsapprove,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount,eggsamount} = useContext(MainContext)
+  const {eggowned,setEggowned,setIsMining,setIsFail,setIsSuccess,currentAccount,setCurrentAccount,setEvma,setIsfeedopen,isfeedopen,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount,eggsamount,setRefetch,refetch} = useContext(MainContext)
   function Success() {
     setIsSuccess(true)
     setBluramount("blur(4px)")
+  }
+  function closefeed(){
+    setIsfeedopen(false)
   }
   async function mint(amount) {
     try {
@@ -48,7 +53,7 @@ const Sbcontracthook = () => {
       const waitfortx = await provider.waitForTransaction(tx.hash)
       setRerender(rerender+1)
       setIsMining("none")
-      Success()
+      setRefetch(true)
 
     } catch (error) {
       console.log(error)
@@ -80,12 +85,31 @@ const Sbcontracthook = () => {
     try {
         const ls = await SB.lockedSupply()
         const ts = await SB.totalERC20Supply()
-        const lc = await SB.lockChoices(0)
         const x = ethers.utils.formatUnits(ls)
         const y = ethers.utils.formatUnits(ts)
         console.log("lock supply = "+x);
         console.log("total ERC20 = "+y);
-        console.log(lc);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  async function getbalance(id) {
+    try {
+      const TokenID = await SB.balances(id)
+      return TokenID;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  async function evolve(id) {
+    try {
+      const tx = await SB.evolutionNFT(id)
+      setIsMining("")
+      const waitfortx = await provider.waitForTransaction(tx.hash)
+      setRerender(rerender+1)
+      setRefetch(true)
+      setIsMining("none")
     } catch (error) {
       console.log(error)
     }
@@ -110,16 +134,32 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-
-  async function feed(id) {
+  async function feededlist(id) {
     try {
-      const info = await SB.feed(id,ethers.utils.parseUnits("100", 18),0);
+      const TokenID = await SB.feededlists(id);
+      return TokenID;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  async function unlock(id) {
+    try {
+      const TokenID = await SB.getunlockamount(id);
+      return TokenID;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  async function feed(amount,id) {
+    try {
+      const info = await SB.feed(id,ethers.utils.parseUnits(""+amount, 18),0);
       console.log(info)
+      closefeed()
       setIsMining("")
       const waitfortx = await provider.waitForTransaction(info.hash)
+      setRefetch(true)
       setRerender(rerender+1)
       setIsMining("none")
-      Success()
 
     } catch (error) {
       console.log(error)
@@ -153,22 +193,18 @@ const Sbcontracthook = () => {
   }
 
 
-  async function lockedinfo(id) {
-     try {
-       const info = await SB.nftLocks(id,0);
-       console.log(info)
-       const x = ethers.utils.formatUnits(info[0])
-       const y = info[1]
-       const z = info[2]
-       const c = ethers.utils.formatUnits(z.duration)
-       console.log("amount"+x)
-       console.log(y)
-       console.log(c)
+  async function lockedinfo(id,index) {
+    try {
+       const info = await SB.nftLocks(id,index);
+      return info;
 
-     } catch (error) {
-       console.log(error)
-     }
+     } 
+     catch {
+       return null;
+      }
    }
+  
+
    const locked = async () => {
     try {
       const info = await SB.nft(0);
@@ -223,10 +259,9 @@ const Sbcontracthook = () => {
 
   useEffect(() => {
     howmanyegg();
-    supplyinfo();
     console.log("loop done")
   }, [rerender,currentAccount])
-    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim}
+    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock}
   };
   
   export default Sbcontracthook;

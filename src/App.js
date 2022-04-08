@@ -29,12 +29,14 @@ function App() {
   let [evma, setEvma] = useState(0)
   const [isapprove, setIsapprove] = useState(0)
   const [isOpen,setIsOpen] = useState(false)
+  const [isfeedopen,setIsfeedopen] = useState(false)
   const [isOpen2,setIsOpen2] = useState(false)
   const [isSuccess,setIsSuccess] = useState(false)
   const [isFail,setIsFail] = useState(false)
   const [isMining,setIsMining] = useState("none")
   const [rerender,setRerender]=useState(0)
   const [isMobileMenu,setIsMobileMenu] = useState(false)
+  const [refetch,setRefetch] = useState(false)
   const [eggsamount,setEggsamount] = useState(0)
   const [eggowned,setEggowned] = useState(0)
 
@@ -47,7 +49,9 @@ function App() {
         lp, setLp,amount,setAmount,evmstaked,setEvmstaked,evmearn,setEvmearn,
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
-        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned}}>
+        ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned
+        ,refetch,setRefetch,isfeedopen,setIsfeedopen
+        }}>
 
         <div class ="w-full h-[90vh]">
           <Navbar />

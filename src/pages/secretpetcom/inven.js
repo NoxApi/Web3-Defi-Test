@@ -4,24 +4,35 @@ import { MainContext } from "../../App";
 import { Link } from "react-router-dom";
 import { useState,useContext,useEffect} from "react";
 import Sbcontracthook from "./sbcontracthook";
+import { ethers } from "ethers";
+import math from "mathjs";
 const Inven = () => {
-  const {mint,geteggidbyindex,tokenURI } = Sbcontracthook()
+  const {NFTlist,fetchingeggs,setFetchingeggs,egggsbalance,getbalance,setEgggs,geteggidbyindex,tokenURI,} = useContext(SacredContext)
+  const {eggowned,rerender} = useContext(MainContext)
   const [currentpage,setCurrentpage] = useState(1)
-  const {egggs,fetchingeggs,setFetchingeggs } = useContext(SacredContext)
-  const {eggowned,rerender,setRerender} = useContext(MainContext)
+  const [currentpageitems,setCurrentpageitems] = useState([])
   const numpage=[];
   const lastitemindex = currentpage * 8;
   const firstitemindex = lastitemindex - 8;
-  const currentpageitems = egggs.slice(firstitemindex,lastitemindex) 
+   
 
-  for (let i = 1; i<= Math.ceil(egggs.length/8); i++){
+  for (let i = 1; i<= Math.ceil(eggowned/8); i++){
     numpage.push(i)
   }
-
   
+function expbars(exp,evolform){{
+   if((exp/10**18)*100/((10**6)*(5**evolform))>100){
+     return 100;
+   }
+   else{
+    return Math.ceil((exp/10**18)*100/((10**6)*(5**evolform)))
+   }
+  }
+}
 useEffect(() => {
+  setCurrentpageitems(NFTlist.slice(firstitemindex,lastitemindex))
   console.log("Inventory Rerender")
-}, [])
+}, [NFTlist,rerender,currentpage])
   return (
   <>
      <div class="grid grid-cols-11 gap-[2vw] h-[50vw] w-[80vw] px-[2.5vw] ml-[10vw] " >
@@ -61,25 +72,28 @@ useEffect(() => {
             </div>
           </div>
           {!fetchingeggs&&<div class="grid grid-cols-4 gap-[1vw] h-[40vw] w-[54vw] mt-[20px] " >
-            {currentpageitems.map((egg) => (
-          <Link key={egg.name} to={"/SP/Info/"+((egg.name).split("#"))[1]} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
-            <div class="bg-gradient-to-b from-transparent via-transparent to-[#EEC377]  border-[1px] border-[] flex flex-col ">
-              <div class="flex justify-between items-center">
-                <p class="  text-left px-[0.3vw] py-[0.1vw] bg-[#fe0000] mt-[0.5vw] ml-[0.2vw] rounded-md text-white text-[0.7vw]"  >{"new"}</p>
-                <div class="bg-[#181D31] rotate-45 border-2  flex align-middle mt-[0.7vw] mr-[0.6vw]">
-                  <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  px-[0.48vw] py-[0.04vw] text-center rotate-[315deg] text-[1vw] font-bold relative">{(egg.evolForm)-1}</p>
+            {currentpageitems.map((egg,index) => (
+              <Link key={egg.name} to={"/SP/Info/"+((egg.name).split("#"))[1]} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
+                <div class=" bginven  bordergold flex flex-col rounded-[0.3vw] border-[0.1vw] border-[#EEC377]">
+                  <div class="flex justify-between items-center ">
+                    <p class="  text-center  bg-[#EF5350] ml-[0.6vw] px-[0.3vw] pb-[0.2vw] rounded-md text-white text-[0.7vw]"  >{"New"}</p>
+                    <div class="bg-[#181D31] rotate-45 border-[0.1vw]  border-[#5F5F5F]  flex mt-[0.7vw] mr-[0.6vw] w-[1.5vw] h-[1.5vw] justify-center">
+                      <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[0.8vw] font-bold ">{egg.evolForm}</p>
+                    </div>
+                  </div>
+                  <img src={egg.image} alt='logo' class="h-[10.5vw] w-[9vw] mb-[0.5vw] self-center" />
+                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.3vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%"}} >
+                </div>}
                 </div>
-              </div>
-              <img src={egg.image} alt='logo' class="h-[11vw] w-[8vw] mb-[0.5vw] self-center" />
-             </div>
-             <p class="text-left text-white text-[0.9vw] mt-[0.5vw]" >{((egg.name).split("#"))[0]}</p>
-             <p class="text-left text-white text-[0.5vw]" >{"#"+((egg.name).split("#"))[1]}</p>
-             <div class="flex justify-between mt-[0.5vw]">
-               <p class="text-white text-[0.9vw] ">Amount</p>
-               <p class="text-[#F9D390] text-[0.9vw]">{200+" EVM"}</p>
-             </div>
-             <p class="text-right text-[#C2C2C2] text-[0.5vw]" >{"$ "+1000000000}</p>
-          </Link>
+            
+                <p class="text-left text-white text-[0.9vw] mt-[0.5vw]" >{((egg.name).split("#"))[0]}</p>
+                <p class="text-left text-white text-[0.6vw]" >{"#"+((egg.name).split("#"))[1]}</p>
+                <div class="flex justify-between mt-[0.5vw]">
+                  <p class="text-white text-[0.9vw] ">Amount</p>
+                  <p class="text-[#F9D390] text-[0.9vw]">{ethers.utils.formatUnits((egggsbalance[index])[0])+" EVM"}</p>
+                </div>
+                <p class="text-right text-[#C2C2C2] text-[0.5vw]" >{"$ "+ethers.utils.formatUnits((egggsbalance[index])[0])*10}</p>
+              </Link>
             ))}
           </div>}
           {fetchingeggs&&<div class="flex h-[40vw] w-[54vw] mt-[20px] items-center justify-center " >
@@ -90,13 +104,13 @@ useEffect(() => {
           </div>}
           {/* footer */}
           <div class="row-span-2 col-span-8  mt-[2vw]  flex justify-center items-center " >
-            {currentpage!=1&&<div onClick = {(e) => setCurrentpage(currentpage-1)} class=" cursor-pointer bg-gradient-to-b from-transparent via-transparent to-[#EEC377] rounded-lg border-[1px] border-[#FFD54F] ">
-            <p class="text-[1vw] text-[#FFD54F] px-[0.5vw]">{"<"}</p>
+            {currentpage!=1&&<div onClick = {(e) => setCurrentpage(currentpage-1)} class=" cursor-pointer bginven rounded-lg border-[1px] border-[#F9D390] w-[2.1vw] h-[2vw] flex justify-center items-center">
+            <p class="text-[1vw] text-[#F9D390] px-[0.5vw]">{"<"}</p>
             </div>}
-            {currentpage==1&&<div  class="  bg-transparent rounded-lg border-[1px] border-[#FFD54F] ">
-            <p class="text-[1vw] text-[#FFD54F] px-[0.5vw]">{"<"}</p>
+            {currentpage==1&&<div  class="  bg-transparent rounded-lg border-[1px] border-[#F9D390] ">
+            <p class="text-[1vw] text-[#F9D390] px-[0.5vw]">{"<"}</p>
             </div>}
-            <div class="bg-gradient-to-b from-transparent via-transparent to-[#EEC377] rounded-lg border-[1px] border-[#FFD54F] ml-[0.2vw]">
+            <div class="bg-[#1A2035] to-[#EEC377] rounded-lg border-[1px] border-[#F9D390] ml-[0.2vw] w-[2.5vw] h-[2vw] flex justify-center items-center">
             <p class="text-[1vw] text-white px-[0.5vw] ">{currentpage}</p>
             </div>
             <div class="">
@@ -107,11 +121,11 @@ useEffect(() => {
             <p onClick = {(e) => setCurrentpage(index)} class="text-[1vw]  text-white px-[0.5vw] cursor-pointer">{numpage[index-1]}</p>
             </div>
             ))}
-              {currentpage!=numpage.length&&<div onClick = {(e) => setCurrentpage(currentpage+1)} class=" cursor-pointer bg-gradient-to-b from-transparent via-transparent to-[#EEC377] rounded-lg border-[1px] border-[#FFD54F]">
-            <p class="text-[1vw] text-[#FFD54F] px-[0.5vw]">{">"}</p>
+              {currentpage!=numpage.length&&<div onClick = {(e) => setCurrentpage(currentpage+1)} class=" cursor-pointer bginven rounded-lg border-[1px] border-[#F9D390] w-[2.1vw] h-[2vw] flex justify-center items-center">
+            <p class="text-[1vw] text-[#F9D390] px-[0.5vw]">{">"}</p>
               </div>}
-              {currentpage==numpage.length&&<div class=" bg-transparent to-[#EEC377] rounded-lg border-[1px] border-[#FFD54F]">
-            <p class="text-[1vw] text-[#FFD54F] px-[0.5vw]">{">"}</p>
+              {currentpage==numpage.length&&<div class=" bg-transparent to-[#EEC377] rounded-lg border-[1px] border-[#F9D390]">
+            <p class="text-[1vw] text-[#F9D390] px-[0.5vw]">{">"}</p>
               </div>}
           </div>
         </div>

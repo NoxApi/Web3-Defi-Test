@@ -9,10 +9,10 @@ const MiningModal = () => {
   return (
     <>
      
-      <div style={{ background: "#121624",height:"13vh",width:"25vw",position:'fixed',bottom:"10px" ,right:"10px",zIndex:"10px",borderColor:"#F9D390",borderWidth:"2px",borderRadius:"1rem",display:isMining}}>
-        {isMining!=="none"&&<div class="flex">
+      <div style={{ background: "#121624",height:"7vw",width:"25vw",position:'fixed',bottom:"10px" ,right:"10px",zIndex:"10px",borderColor:"#F9D390",borderWidth:"2px",borderRadius:"1rem",display:isMining}}>
+        {isMining!=="none"&&<div class="flex justify-center items-center">
           <img src={pickaxe} alt="logo" className="pickaxe" />
-          <p class="text-[2vh] text-white text-center justify-center mt-[5vh]">Transaction currently mining</p>
+          <p class="text-[1vw] text-white text-center justify-center mt-[]">Transaction currently mining</p>
         </div> }               
       </div>
     </>

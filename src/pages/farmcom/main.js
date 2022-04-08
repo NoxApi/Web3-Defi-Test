@@ -3,7 +3,8 @@ import './farm.css'
 import { useContext } from 'react';
 import { MainContext } from '../../App';
 import ayla1 from '../../images/Ayla1.svg'
-import evermoonlogo from '../../images/EVMBNBLP.svg'
+import bg from '../../images/bg.svg'
+import evermoonlogo from '../../images/EVMBNBLP.svg';
 
 const Farmmain = (props) => {
     const harvest = props.harvest;
@@ -19,7 +20,8 @@ const Farmmain = (props) => {
     }
     
 return(
-    <div  style={{ background: "linear-gradient(180deg, #0A0910 0%, #07162D 100%)",height:"100vh",width:"100vw", filter:bluramount }}>
+  <div class=" bg z-[-20]">
+    <div  style={{ height:"100vh",width:"100vw", filter:bluramount }}>
       {/* under Navbar */}
     <div class="flex  items-center  h-[4vw]  py-[3vw] mx-[15vw] justify-between MBH:mx-[4vw]">
       <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2.5vw] MBH:text-[3vw] text-center font-serif">
@@ -30,10 +32,12 @@ return(
       </div>
     </div >
       {/* Farm Card */}
-    <div class="MBH:hidden">
+    <div class="MBH:hidden" >
+    <img src={bg}  className="absolute w-[70vw] h-[40vw]  z-[0] mr-[10vw] left-[14.9vw] "/>
     <div className="Abackground">
-      <div class="grid grid-cols-4 gap-[2vw] h-[30vw] w-[70vw] pr-[2.5vw] " >
-        
+    
+      <div class="grid grid-cols-4 gap-[2vw] h-[35vw] w-[70vw] pr-[2.5vw] z-20 " >
+      
         <div class="row-span-4 col-span-2 w-[100%] h-[100%] flex items-center justify-center" >
         <img src={ayla1} alt='logo' className ="Aone" />
         <img src={evermoonlogo} alt='logo' class="Atwo"  />
@@ -48,19 +52,19 @@ return(
             <p>View Contract </p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] bg-[#121624] flex content-center">
+        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] z-20 bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[0.6vw]">
             <p class="text-[#C2C2C2] text-[0.8vw]">APR </p>
             <p class="text-[#FFFFFF] text-[1vw]">{560000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] bg-[#121624] flex content-center">
+        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] z-20 bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[0.6vw]">
               <p class="text-[#C2C2C2] text-[0.8vw]">Liquidity </p>
               <p class="text-[#FFFFFF] text-[1vw]">{"$"+400000000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl w-[16vw] h-[13vw] bg-[#121624] flex content-center" >
+        <div class="box-border rounded-3xl w-[16vw] h-[13vw] z-20 bg-[#121624] flex content-center" >
           <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]" >
               <p class="text-[#C2C2C2] text-[0.9vw]">EVM Earned</p>
               {(isapprove===1||isapprove===2) && <p class="text-[#C2C2C2] text-[1.1vw]">{parseFloat(evmearn).toFixed(5)+" EVM"}</p>}
@@ -76,7 +80,7 @@ return(
               </button>}
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vw] bg-[#121624] flex content-center">
+        <div class="box-border rounded-3xl  w-[16vw] h-[13vw] z-20 bg-[#121624] flex content-center">
           <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]">
               <p class="text-[#C2C2C2] text-[0.9vw]">EVM-BNB Staked</p>
               {(isapprove===1||isapprove===2)  &&<p class="text-[#FFFFFF] text-[1.2vw]">{evmstaked}</p>}
@@ -105,6 +109,7 @@ return(
       </div>
     </div>
     </div>
+  </div>
   </div>
     );
 };

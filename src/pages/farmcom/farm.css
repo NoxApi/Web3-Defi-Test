@@ -9,10 +9,10 @@
     box-sizing: border-box;
     border-width: 4px;
     border-color: #F9D390;
-    background : linear-gradient(to top left, #EEC377,#5e99a0,#EEC377);
     box-shadow: 0px 113px 113px rgba(0, 0, 0, 0.02), 0px 95px 95px rgba(0, 0, 0, 0.04), 0px 71px 71px rgba(0, 0, 0, 0.07), 0px 39px 39px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.15);
+    background-color:#0A0910;
+    z-index: -10;
 }
-
 .Aone {
     position : absolute;
     width: 40vw;
@@ -60,7 +60,7 @@
   }
 
   .pickaxe{
-      height: 13vh;
+      height: 6vw;
       width : 7vw;
   }
   @media (prefers-reduced-motion: no-preference) {
