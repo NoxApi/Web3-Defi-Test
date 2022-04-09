@@ -10,7 +10,6 @@ export const Nav = styled.nav`
   padding-top: 2.5vh;
   padding-bottom: 2.5vh;
   font-size: 16px;
-  filter:{bluramount}
   @media screen and (max-width: 1535px) {
     height: 6.3vw;
     padding-top: 0.01vw;
@@ -20,6 +19,18 @@ export const Nav = styled.nav`
     height: 6.3vw;
     padding-top: 0.01vw;
     
+  }
+  @media screen and (max-width: 1535px) {
+    height: 6.3vw;
+    padding-top: 0.01vw;
+    
+  }
+  @media screen and (max-width: 640px) {
+    height: 12vh;
+    padding-top: 0.01vw;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5vw;
   }
 `;
 

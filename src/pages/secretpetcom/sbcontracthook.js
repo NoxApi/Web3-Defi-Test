@@ -93,7 +93,28 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-  
+  async function ardallow() {
+    try {
+        const ls = await evm.allowance(currentAccount, sacredbeastaddr)
+        console.log(ls/1);
+        return (ls/1)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const approveEVM = async () => {
+    try{
+    const tx2 = await evm.approve(sacredbeastaddr,ethers.utils.parseUnits("500000000", 18))
+    console.log(tx2.hash)
+    setIsMining("")
+    const waitfortx2 = await provider.waitForTransaction(tx2.hash)
+    setIsMining("none")
+    setRerender(rerender+1)
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
   async function getbalance(id) {
     try {
       const TokenID = await SB.balances(id)
@@ -158,7 +179,6 @@ const Sbcontracthook = () => {
       setIsMining("")
       const waitfortx = await provider.waitForTransaction(info.hash)
       setRefetch(true)
-      setRerender(rerender+1)
       setIsMining("none")
 
     } catch (error) {
@@ -167,11 +187,12 @@ const Sbcontracthook = () => {
   }
   async function reclaim(id) {
     try {
+      console.log(id)
       const info = await SB.reclaimExpiredLocks(id);
       console.log(info)
       setIsMining("")
       const waitfortx = await provider.waitForTransaction(info.hash)
-      setRerender(rerender+1)
+      setRefetch(true)
       setIsMining("none")
       Success()
 
@@ -261,7 +282,7 @@ const Sbcontracthook = () => {
     howmanyegg();
     console.log("loop done")
   }, [rerender,currentAccount])
-    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock}
+    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock,ardallow,approveEVM}
   };
   
   export default Sbcontracthook;

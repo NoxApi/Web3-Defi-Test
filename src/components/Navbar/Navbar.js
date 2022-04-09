@@ -75,12 +75,12 @@ const Navbar = () => {
         </div> 
 
         </NavMenu>
-        <div class="flex justify-between  w-[100vw] mx-[4vw] h-[7vw] TL:hidden items-center MB:mx-[15vw] MB:w-[70vw] ">
-          <img src={evermoon1} alt='logo' class=" h-[3.5vw]" />
-          <div onClick={(e)=> setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer">
-            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>
-            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>
-            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw]" ></div>
+        <div class="flex justify-between  w-[100vw] mx-[4vw] h-[7vw] TL:hidden items-center MB:mx-[15vw] MB:w-[70vw]">
+          <img src={evermoon1} alt='logo' class=" h-[3.5vw] MBH:h-[7vw] MBH:w-[40vw]" />
+          <div onClick={(e)=> setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer MBH:h-[4vw] MBH:w-[8vw] MBH:mr-[5vw]">
+            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
+            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
+            <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
 
           </div>
         </div>

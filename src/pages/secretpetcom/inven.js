@@ -14,10 +14,19 @@ const Inven = () => {
   const numpage=[];
   const lastitemindex = currentpage * 8;
   const firstitemindex = lastitemindex - 8;
+
+  const [currentpagem,setCurrentpagem] = useState(1)
+  const [currentpageitemsm,setCurrentpageitemsm] = useState([])
+  const numpagem=[];
+  const lastitemindexm = currentpagem * 4;
+  const firstitemindexm = lastitemindexm - 4;
    
 
   for (let i = 1; i<= Math.ceil(eggowned/8); i++){
     numpage.push(i)
+  }
+  for (let i = 1; i<= Math.ceil(eggowned/4); i++){
+    numpagem.push(i)
   }
   
 function expbars(exp,evolform){{
@@ -31,11 +40,12 @@ function expbars(exp,evolform){{
 }
 useEffect(() => {
   setCurrentpageitems(NFTlist.slice(firstitemindex,lastitemindex))
+  setCurrentpageitemsm(NFTlist.slice(firstitemindexm,lastitemindexm))
   console.log("Inventory Rerender")
-}, [NFTlist,rerender,currentpage])
+}, [NFTlist,currentpage,currentpagem])
   return (
   <>
-     <div class="grid grid-cols-11 gap-[2vw] h-[50vw] w-[80vw] px-[2.5vw] ml-[10vw] " >
+     <div class="grid grid-cols-11 gap-[2vw] h-[50vw] w-[80vw] px-[2.5vw] ml-[10vw] MBH:hidden " >
         {/* griditem */}
         <div class="row-span-10 col-span-3 w-[14vw] h-[48.5vw] flex justify-start flex-col bg-gradient-to-b from-[#1A2035] via-[#1A2035] to-transparent my-[30px] border-2 rounded-lg border-[#CA9E51]" >
             <div class="flex mt-[20px] mx-[1vw] justify-between ">
@@ -59,15 +69,15 @@ useEffect(() => {
             </div>  
         </div>
         {/* inven grid */}
-        <div class="row-span-8 col-span- w-[56vw] h-[45vw] my-[30px]"  >
+        <div class="col-span-8  w-[56vw] h-[45vw] my-[30px]"  >
           <div class="flex justify-between items-center">
             <p class="text-[1.1vw] text-[#c2c2c2]">{eggowned+" Result"}</p>
             <div class="flex  ">
-              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
-                <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
+              <div class="bg-[transparent] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
+                <p class="text-[0.8vw] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
               </div>
-              <div class="bg-[#161E2F] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
-                <p class="text-[0.95vw] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
+              <div class="bg-[transparent] w-[10vw] h-[2vw] flex justify-start items-center border-[0.1vw] border-[#CA9E51] mr-[3.75vw]"  >
+                <p class="text-[0.8vw] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
               </div>
             </div>
           </div>
@@ -77,7 +87,7 @@ useEffect(() => {
                 <div class=" bginven  bordergold flex flex-col rounded-[0.3vw] border-[0.1vw] border-[#EEC377]">
                   <div class="flex justify-between items-center ">
                     <p class="  text-center  bg-[#EF5350] ml-[0.6vw] px-[0.3vw] pb-[0.2vw] rounded-md text-white text-[0.7vw]"  >{"New"}</p>
-                    <div class="bg-[#181D31] rotate-45 border-[0.1vw]  border-[#5F5F5F]  flex mt-[0.7vw] mr-[0.6vw] w-[1.5vw] h-[1.5vw] justify-center">
+                    <div class="bg-[#181D31] rotate-45 border-[0.1vw]  border-[#5F5F5F] rounded-[0.3vw]  flex mt-[0.7vw] mr-[0.6vw] w-[1.5vw] h-[1.5vw] justify-center">
                       <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[0.8vw] font-bold ">{egg.evolForm}</p>
                     </div>
                   </div>
@@ -130,6 +140,85 @@ useEffect(() => {
           </div>
         </div>
       </div>  
+      {/* MOBILE */}
+      <div class=" h-[1000px] w-[85vw] mx-[7.5vw]  MB:hidden" >
+        <div class="flex justify-between items-center mt-[20px]">
+          <div class="bg-[transparent] w-[70%] h-[40px] flex justify-start items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
+            <p class="text-[18px] pl-[30px] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
+          </div>
+          <div class="bg-[transparent] w-[32%] h-[40px] flex justify-center items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
+            <p class="text-[18px] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Filter"}</p>
+          </div>
+        </div>
+        <div class="flex justify-between items-center mt-[10px]">
+          <div class="bg-[transparent] w-[50%] h-[40px] flex justify-start items-center  mr-[3.75vw]"  >
+            <p class="text-[23px]  text-[#c2c2c2] ml-[0.5vw]">{eggowned+" Result"}</p>
+          </div>
+          <div class="bg-[transparent] w-[45%] h-[40px] flex justify-start items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
+            <p class="text-[18px] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
+          </div>
+        </div>
+        {/* mapping */}
+        {!fetchingeggs&&<div class="grid grid-cols-2  h-[140vw] w-[85vw] mt-[20px] " >
+            {currentpageitemsm.map((egg,index) => (
+              <Link key={egg.name} to={"/SP/Info/"+((egg.name).split("#"))[1]} class="row-span-1 col-span-1 w-[40vw] h-[65vw] flex-col justify-between">
+                <div class=" bginven  bordergold flex flex-col rounded-[10px] border-[0.1vw] border-[#EEC377]">
+                  <div class="flex justify-between items-center w-[100%] h-[40px] ">
+                    <p class="  text-center  bg-[#EF5350] ml-[0.6vw] px-[0.3vw] pb-[0.2vw] rounded-md text-white text-[17px]"  >{"New"}</p>
+                    <div class="bg-[#181D31] rotate-45 border-[2px]  border-[#5F5F5F] rounded-[6px]  flex mt-[4vw] mr-[2vw] w-[6.5vw] h-[6.5vw] justify-center">
+                      <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[23px] font-bold ">{egg.evolForm}</p>
+                    </div>
+                  </div>
+                  <img src={egg.image} alt='logo' class="h-[40vw] w-[33vw] mb-[0.5vw] self-center" />
+                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"#CA9E51"}} >
+                </div>}
+                {!expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "transparent",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"transparent"}} >
+                </div>}
+                </div>
+            
+                <p class="text-left text-white text-[3vw] mt-[0.5vw] font-bold" >{((egg.name).split("#"))[0]}</p>
+                <p class="text-left text-white text-[2.6vw] " >{"#"+((egg.name).split("#"))[1]}</p>
+                <div class="flex justify-between mt-[0.5vw]">
+                  <p class="text-white text-[2.5vw] ">Amount</p>
+                  <p class="text-[#F9D390] text-[2.5vw]">{ethers.utils.formatUnits((egggsbalance[index])[0])+" EVM"}</p>
+                </div>
+                <p class="text-right text-[#C2C2C2] text-[2.3vw]" >{"$ "+ethers.utils.formatUnits((egggsbalance[index])[0])*10}</p>
+              </Link>
+            ))}
+          </div>}
+          {fetchingeggs&&<div class="flex h-[100vw] w-[100%] mt-[20px] items-center justify-center flex-col " >
+           
+           <div class=" animate-spin border-[2vw] border-[#1A2035] rounded-[50%] w-[15vw] h-[15vw] mr-[1vw] border-t-[#E2B15B]"></div>
+           <p class=" animate-pulse text-[6vw] text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]">Fetching NFT List </p>
+         
+         </div>}
+          {/* footer */}
+          <div class="row-span-2 col-span-8  mt-[2vw]  flex justify-center items-center " >
+            {currentpagem!=1&&<div onClick = {(e) => setCurrentpagem(currentpagem-1)} class=" cursor-pointer bginven rounded-lg border-[1px] border-[#F9D390] w-[5vw] h-[5vw] flex justify-center items-center">
+            <p class="text-[3vw] text-[#F9D390] px-[0.5vw]">{"<"}</p>
+            </div>}
+            {currentpagem==1&&<div  class="  bg-transparent rounded-lg border-[1px] w-[4vw] h-[4vw] border-[#F9D390]  ">
+            <p class="text-[2.3vw] text-[#F9D390] px-[0.5vw]">{"<"}</p>
+            </div>}
+            <div class="bg-[#1A2035] to-[#EEC377] rounded-lg border-[1px] border-[#F9D390] ml-[1.5vw] w-[5vw] h-[5vw] flex justify-center items-center">
+            <p class="text-[3vw] text-white px-[0.5vw] ">{currentpagem}</p>
+            </div>
+            <div class="">
+            <p class="text-[3vw] text-white px-[0.5vw] ml-[1.5vw]">{"of"}</p>
+            </div>
+            {numpagem.map((index) => (
+            <div class="">
+            <p onClick = {(e) => setCurrentpagem(index)} class="text-[3vw]  text-white px-[0.5vw] cursor-pointer ml-[1vw]">{numpagem[index-1]}</p>
+            </div>
+            ))}
+              {currentpagem!=numpagem.length&&<div onClick = {(e) => setCurrentpagem(currentpagem+1)} class=" ml-[1.5vw] cursor-pointer bginven rounded-lg border-[1px] border-[#F9D390] w-[5vw] h-[5vw] flex justify-center items-center">
+            <p class="text-[3vw] text-center text-[#F9D390] mb-[0.2vw] ">{">"}</p>
+              </div>}
+              {currentpagem==numpagem.length&&<div class=" bg-transparent to-[#EEC377] rounded-lg border-[1px]  ml-[1.5vw] border-[#F9D390] w-[4vw] h-[4vw]">
+            <p class="text-[2.3vw] text-[#F9D390] px-[0.5vw]">{">"}</p>
+              </div>}
+          </div>
+      </div>
   </>
   );
 };

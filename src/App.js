@@ -20,6 +20,7 @@ import Mobilenav from './components/Navbar/mobilenavmenu';
 export const MainContext = React.createContext(null);
 
 function App() {
+  const today =  new Date();
   const [lp, setLp] = useState(0)
   const [amount,setAmount] = useState(0)
   const [evmstaked,setEvmstaked] = useState(0)
@@ -50,7 +51,7 @@ function App() {
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
         ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned
-        ,refetch,setRefetch,isfeedopen,setIsfeedopen
+        ,refetch,setRefetch,isfeedopen,setIsfeedopen,today
         }}>
 
         <div class ="w-full h-[90vh]">
