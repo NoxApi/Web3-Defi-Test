@@ -3,6 +3,10 @@ import './../../App.css';
 import { useEffect,useContext } from 'react';
 import { MainContext } from '../../App';
 import evermoon1 from './../../images/evermoon1logo.svg'
+import mm from './../../images/metamask.svg'
+import copy from './../../images/copy.svg'
+import arrow from './../../images/uparrow.svg'
+import orca from './../../images/orca.svg'
 import { Link } from 'react-router-dom';
 import './nav.css'
 import {
@@ -14,8 +18,13 @@ import {
 import Contractshook from '../../pages/farmcom/contractshook';
 
 const Navbar = () => {
-  const {currentAccount,evma,setIsMobileMenu,sboutlet,setSboutlet} = useContext(MainContext)
+  const {currentAccount,evma,setIsMobileMenu,sboutlet,setSboutlet,isMobileMenu,setBluramount} = useContext(MainContext)
   const {connectWallet,approveEVM} = Contractshook()
+  function closeModal() {
+    setIsMobileMenu(false)
+    setBluramount("blur(0px)")
+    console.log(isMobileMenu)
+  }
 
   const naviga = document.querySelectorAll('.naviga');
   function activeLink(){
@@ -65,8 +74,10 @@ const Navbar = () => {
 
         <div class=" flex items-center bp2:hidden"  > 
           {!currentAccount && (
-          <button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick={connectWallet}>
-            <p class="text-[#000000] text-[15px] py-[5px] px-[20px]" >{"Sign In"}</p>
+          <button class="goldbgbutton  box-border border-[#000000] relative  w-[13vw] h-[6vh] flex justify-center items-center " onClick={connectWallet}>
+            <img src={mm} alt="logo" />
+            <p class="text-[#000000]  text-[0.8vw] font-bold " >{"Connect Wallet"}</p>
+            
           </button>
           )}
 
@@ -74,9 +85,12 @@ const Navbar = () => {
           <div class="flex mb-[1vh] items-center">
             <div class="">
               <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-[1vw] py-[0.6vh] px-[1vw] bp1:text-[0.85vw]" >{parseFloat(evma).toFixed(3) + " EVM"}</p>
-              <p class="text-white nav1:text-[0.8vw] " onClick={() => {navigator.clipboard.writeText(currentAccount)}}>{currentAccount.substring(0, 17)+"..."}</p>
+              <div class="flex">
+                <img src={copy} alt="logo" className="w-[1vw] h-[1vw] cursor-pointer" onClick={() => {navigator.clipboard.writeText(currentAccount)}} />
+                <p class="text-[#C2C2C2] nav1:text-[0.8vw] ml-[0.2vw]" >{currentAccount.substring(0, 17)+"..."}</p>
+              </div>
             </div>
-          <img onClick={approveEVM} src={require('../../images/benz.PNG')} alt='logo' class="w-[3.5vw] h-[3.5vw] rounded-full" />
+            <img src={orca} alt="logo" class="w-[3.5vw] h-[3.5vw] rounded-full" />    
           </div>
           )}
         </div> 
@@ -84,12 +98,13 @@ const Navbar = () => {
         </NavMenu>
         <div class="flex justify-between  w-[100vw] mx-[4vw] h-[7vw] TL:hidden items-center MB:mx-[15vw] MB:w-[70vw]">
           <img src={evermoon1} alt='logo' class=" h-[3.5vw] MBH:h-[7vw] MBH:w-[40vw]" />
-          <div onClick={(e)=> setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer MBH:h-[4vw] MBH:w-[8vw] MBH:mr-[5vw]">
+         {!isMobileMenu&& <div onClick={(e)=> setIsMobileMenu(true)} class="h-[2.05vw] w-[4vw] justify-between flex flex-col items-center cursor-pointer MBH:h-[4vw] MBH:w-[8vw] MBH:mr-[5vw] MBH:z-20">
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
             <div class="bg-white w-[3vw] h-[0.3vw] rounded-[0.3vw] MBH:h-[0.8vw] MBH:w-[6vw]" ></div>
+          </div>}
+          {isMobileMenu&&<img src={arrow} alt="logo" class=" w-[8vw] MB:hidden cursor-pointer mr-[5vw] h-[7vw] MBH:z-20 rotate-90" onClick={closeModal}/>}
 
-          </div>
         </div>
       </Nav>
     </div>

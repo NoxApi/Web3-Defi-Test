@@ -17,7 +17,7 @@
     position : absolute;
     width: 40vw;
     height: 30vw;
-    margin-left: 4vw;
+    margin-left: 3vw;
 }
 
 
@@ -38,9 +38,9 @@
 
   @keyframes Aone-animated {
     0%   {opacity: 0; height: 10vh; }
-    20%  {opacity: 0.7; height: 65vh;}
-    50%   {opacity: 0.7; height: 65vh;}
-    80%   {opacity: 0.7; height: 65vh;}
+    20%  {opacity: 0.7; height: 70vh;}
+    50%   {opacity: 0.7; height: 70vh;}
+    80%   {opacity: 0.7; height: 70vh;}
     100%  {opacity: 0; height: 10vh;}
   }
 
@@ -60,8 +60,6 @@
   }
 
   .pickaxe{
-      height: 6vw;
-      width : 7vw;
   }
   @media (prefers-reduced-motion: no-preference) {
     .pickaxe{
@@ -70,9 +68,9 @@
      }
     }
     @keyframes pickaxe-animated {
-        0%   {transform: rotate(-90deg); }
+        0%   {transform: rotate(-70deg); }
         50%   {transform: rotate(20deg); }
-        100%   {transform: rotate(-90deg); }
+        100%   {transform: rotate(-70deg); }
       }
   @media screen and (max-width: 1307px) {
     .Aone {

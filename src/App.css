@@ -14,6 +14,26 @@
     opacity: 1;
 
 }
+.goldbgbutton{
+    background: linear-gradient(180deg, #f9d390 0%, #e2b15b 100%);
+  
+  }
+  .goldbgbutton:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    border-top: 0.7vw solid #0E0F19;
+    border-right: 0.7vw solid transparent;
+    width: 0;
+  }
+  .goldbgbutton:after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    border-right: 0.7vw solid #0E0F19;
+    border-top: 0.7vw solid transparent;
+    width: 0;
+  }
 .goldgrow{
     background-color: #ffcd60 ;
     
@@ -85,3 +105,18 @@
         transition: transform 700ms ease-in-out ;
     }
   }
+.typing{
+    animation: type 2s steps(21) infinite;
+    color:#F9D390 ;
+    text-shadow: 0 0 1vh #E2B15B,
+                    0px 0px 2vh black;
+}
+@keyframes type {
+    0%{
+        width:0%;
+    }
+    100%{
+        width: 75%;;
+    }
+    
+}

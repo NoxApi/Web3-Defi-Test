@@ -1,4 +1,4 @@
-import eggpic from "./../../images/egg.svg"
+import filter from "./../../images/filter.svg"
 import { SacredContext } from "../Sacredpet";
 import { MainContext } from "../../App";
 import { Link } from "react-router-dom";
@@ -48,9 +48,12 @@ useEffect(() => {
      <div class="grid grid-cols-11 gap-[2vw] h-[auto] w-[80vw] px-[2.5vw] ml-[10vw] MBH:hidden" >
         {/* griditem */}
         <div class="row-span-10 col-span-3 w-[14vw] h-[95%] flex justify-start flex-col bg-gradient-to-b from-[#1A2035] via-[#1A2035] to-transparent my-[30px] border-2 rounded-lg border-[#CA9E51]" >
-            <div class="flex mt-[20px] mx-[1vw] justify-between ">
-              <p class="text-[0.95vw] text-[#c2c2c2]">Filter</p>
-              <p class="text-[0.65vw] text-[#F9D390]">{"Reset"}</p>
+            <div class="flex mt-[20px] mx-[1vw] justify-between items-center ">
+              <div className="flex">
+              <img src={filter} alt="logo" />
+              <p class="text-[0.9vw] text-[white] ml-[0.2vw]">Filter</p>
+              </div>
+              <p class="text-[0.7vw] text-[#F9D390] cursor-pointer">{"Reset"}</p>
             </div>  
 
             
@@ -167,14 +170,14 @@ useEffect(() => {
                 <div class=" bginven  bordergold flex flex-col rounded-[10px] border-[0.1vw] border-[#EEC377]">
                   <div class="flex justify-between items-center w-[100%] h-[40px] ">
                     <p class="  text-center  bg-[#EF5350] ml-[0.6vw] px-[0.3vw] pb-[0.2vw] rounded-md text-white text-[17px]"  >{"New"}</p>
-                    <div class="bg-[#181D31] rotate-45 border-[2px]  border-[#5F5F5F] rounded-[6px]  flex mt-[4vw] mr-[2vw] w-[6.5vw] h-[6.5vw] justify-center">
-                      <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[23px] font-bold ">{egg.evolForm}</p>
+                    <div class="bg-[#181D31] rotate-45 border-[2px]  border-[#5F5F5F] rounded-[1.3vw]  flex mt-[4vw] mr-[2vw] w-[6.5vw] h-[6.5vw] justify-center">
+                      <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[4vw] font-bold ">{egg.evolForm}</p>
                     </div>
                   </div>
                   <img src={egg.image} alt='logo' class="h-[40vw] w-[33vw] mb-[0.5vw] self-center" />
-                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"#CA9E51",boxShadow:"0px 0px 2vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.5vw rgba(0,0,0,0.5)",borderRadius:"0.1vw",borderRadius:"0.5vw",marginBottom:"0.3vw"}} >
+                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"0.1vw",borderRadius:"4vw",borderColor:"#CA9E51",boxShadow:"0px 0px 2vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.5vw rgba(0,0,0,0.5)",borderRadius:"0.1vw",borderRadius:"0.5vw",marginBottom:"0.3vw"}} >
                 </div>}
-                {!expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "transparent",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"transparent"}} >
+                {!expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "transparent",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"0.1vw",borderRadius:"1vw",borderColor:"transparent"}} >
                 </div>}
                 </div>
             

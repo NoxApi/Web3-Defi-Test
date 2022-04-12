@@ -27,15 +27,25 @@ const Sbcontracthook = () => {
   
   //provider & signer
   const { ethereum } = window;
+  var provider = "";
+  var signer = "";
 
-
-  const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
   //all contracts 
-  const pool = new ethers.Contract(pooladdr, poolABI, signer);
-  const pair = new ethers.Contract(pooladdr, pairABI, signer);
-  const SB = new ethers.Contract(sacredbeastaddr, SBABI, signer);
-  const evm = new ethers.Contract(evmaddr, evmABI, signer);
+  var pool = "";
+  var pair = "";
+  var SB = "";
+  var evm = "";
+
+  if (ethereum){
+  var provider = new ethers.providers.Web3Provider(ethereum);
+  var signer = provider.getSigner();
+
+  //all contracts 
+  var pool = new ethers.Contract(pooladdr, poolABI, signer);
+  var pair = new ethers.Contract(pooladdr, pairABI, signer);
+  var SB = new ethers.Contract(sacredbeastaddr, SBABI, signer);
+  var evm = new ethers.Contract(evmaddr, evmABI, signer);
+  }
   //all context
   const {eggowned,setEggowned,setIsMining,setIsFail,setIsSuccess,currentAccount,setCurrentAccount,setEvma,setIsfeedopen,isfeedopen,rerender,setRerender,evmearn,setEvmearn,evmstaked,setEvmstaked,setIsOpen,setIsOpen2,setBluramount,eggsamount,setRefetch,refetch} = useContext(MainContext)
   function Success() {
@@ -49,7 +59,7 @@ const Sbcontracthook = () => {
     try {
       const tx = await SB.mintBeast(amount);
       console.log(tx)
-      setIsMining("")
+      setIsMining("flex")
       const waitfortx = await provider.waitForTransaction(tx.hash)
       setRerender(rerender+1)
       setIsMining("none")
@@ -62,7 +72,7 @@ const Sbcontracthook = () => {
   const editlock = async () => {
     try {
         const tx = await SB.SetLockChoice(0,ethers.utils.parseUnits("86400", 18),2,0);
-        setIsMining("")
+        setIsMining("flex")
         const waitfortx = await provider.waitForTransaction(tx.hash)
         setRerender(rerender+1)
         setIsMining("none")
@@ -106,7 +116,7 @@ const Sbcontracthook = () => {
     try{
     const tx2 = await evm.approve(sacredbeastaddr,ethers.utils.parseUnits("500000000", 18))
     console.log(tx2.hash)
-    setIsMining("")
+    setIsMining("flex")
     const waitfortx2 = await provider.waitForTransaction(tx2.hash)
     setIsMining("none")
     setRerender(rerender+1)
@@ -126,7 +136,7 @@ const Sbcontracthook = () => {
   async function evolve(id) {
     try {
       const tx = await SB.evolutionNFT(id)
-      setIsMining("")
+      setIsMining("flex")
       const waitfortx = await provider.waitForTransaction(tx.hash)
       setRerender(rerender+1)
       setRefetch(true)
@@ -176,7 +186,7 @@ const Sbcontracthook = () => {
       const info = await SB.feed(id,ethers.utils.parseUnits(""+amount, 18),0);
       console.log(info)
       closefeed()
-      setIsMining("")
+      setIsMining("flex")
       const waitfortx = await provider.waitForTransaction(info.hash)
       setRefetch(true)
       setIsMining("none")
@@ -190,7 +200,7 @@ const Sbcontracthook = () => {
       console.log(id)
       const info = await SB.reclaimExpiredLocks(id);
       console.log(info)
-      setIsMining("")
+      setIsMining("flex")
       const waitfortx = await provider.waitForTransaction(info.hash)
       setRefetch(true)
       setIsMining("none")

@@ -268,8 +268,8 @@ const Info = () => {
         <p class=" text-center text-white text-[3vw]  z-[1px]  justify-self-center mt-[20px]">{(eggexp/(10**18))+"/"+((10**6)*(5**eggef))}</p>
         <div class="self-center origin-center flex justify-between items-center w-[100%] h-[1vw]">
         
-          <div class=" h-[10px] w-[100%] rounded-[0.3vw] bg-[#C4C4C4] flex border-[black] border-[0.01vw] ml-[0.5vw] mr-[1.5vw] mt-5">
-          <div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",borderRadius: "0.1vw",zIndex:"100px",width:expbars+"%"}}>
+          <div class=" h-[10px] w-[100%] rounded-[1vw] bg-[#C4C4C4] flex border-[black] border-[0.01vw] ml-[0.5vw] mr-[1.5vw] mt-5">
+          <div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",borderRadius: "0.1vw",zIndex:"100px",width:expbars+"%",boxShadow:"0px 0px 2vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.5vw rgba(0,0,0,0.5)",borderRadius:"0.1vw",borderRadius:"1vw",marginBottom:"0.3vw"}}>
           </div>
           </div>
             
