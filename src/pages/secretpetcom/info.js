@@ -152,7 +152,7 @@ const Info = () => {
   }, [rerender,feedindex,refood])
 
   return (
-  <> 
+  <div className="h-[100%] MBH:h-[100%]"> 
    <div class="absolute ml-[15vw] text-white MBH:ml-[3vw] MBH:mt-[25px]">
      <Link to="/SP/Inven"class="cursor-pointer"> {"< Back"} </Link>
     </div>
@@ -174,7 +174,7 @@ const Info = () => {
         
           <p class="text-left text-white text-[0.9vw]">EXP</p>
           <div class=" h-[0.45vw] w-[100%] rounded-[0.3vw] bg-[#C4C4C4] flex border-[black] border-[0.01vw] ml-[0.5vw] mr-[1.5vw]">
-          <div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",borderRadius: "0.1vw",zIndex:"100px",width:expbars+"%"}}>
+          <div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",borderRadius: "0.1vw",zIndex:"100px",width:expbars+"%",boxShadow:"0px 0px 1vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 2px rgba(255,255,255,0.1),inset 2px 2px 1vw rgba(0,0,0,0.1)",borderRadius:"0.1vw"}}>
           </div>
           </div>
             
@@ -222,8 +222,8 @@ const Info = () => {
           
           {!fetchingfood&&
           feedlist.map((food,index) => (
-          <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw]"> 
-          <div style={{borderLeftWidth:"5px",height:"100%",borderColor:getcolor(food.unlockTime),marginLeft:"1vw"}}></div>    
+          <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw] h-[3.5vw]"> 
+          <div style={{height:"100%",marginLeft:"1vw",backgroundColor:getcolor(food.unlockTime),boxShadow:"0.05vw 0.05vw 0.3vw "+getcolor(food.unlockTime)+",1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.1vw rgba(0,0,0,0.1)"}}>&nbsp;</div>    
           <div class={"text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.3vw]"}>
             <p class="text-[0.5vw]">feeded amount</p>
             <p class="text-[1vw]">{(food.amount/(10**18))+" EVM"}</p>
@@ -318,7 +318,7 @@ const Info = () => {
           {!fetchingfood&&
           feedlist.map((food,index) => (
           <div class="flex justify-between bg-[#181D31] w-[100%] py-[0.8vw] border-[1px] rounded-[15px] px-[5vw] h-[75px] items-center mt-[20px] border-[#5F5F5F]"> 
-          <div style={{borderLeftWidth:"5px",height:"70%",borderColor:getcolor(food.unlockTime),marginLeft:"1vw"}}></div>    
+          <div style={{height:"70%",backgroundColor:getcolor(food.unlockTime),marginLeft:"1vw",boxShadow:"0.05vw 0.05vw 1.6vw "+getcolor(food.unlockTime)+",1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.1vw rgba(0,0,0,0.1)"}}>&nbsp;</div>    
           <div class={"text-left w-[100%] text-[#c2c2c2] flex flex-col justify-start pl-[0.8vw] ml-[4vw]"}>
             <p class="text-[3vw] w-[100%]">feeded amount</p>
             <p class="text-[5vw] text-white">{(food.amount/(10**18))+" EVM"}</p>
@@ -333,7 +333,7 @@ const Info = () => {
         </div>
 
       </div>
-  </>
+  </div>
   );
 };
 

@@ -44,10 +44,10 @@ useEffect(() => {
   console.log("Inventory Rerender")
 }, [NFTlist,currentpage,currentpagem])
   return (
-  <>
-     <div class="grid grid-cols-11 gap-[2vw] h-[50vw] w-[80vw] px-[2.5vw] ml-[10vw] MBH:hidden " >
+  <div class='h-[110vh] MBH:h-auto'>
+     <div class="grid grid-cols-11 gap-[2vw] h-[auto] w-[80vw] px-[2.5vw] ml-[10vw] MBH:hidden" >
         {/* griditem */}
-        <div class="row-span-10 col-span-3 w-[14vw] h-[48.5vw] flex justify-start flex-col bg-gradient-to-b from-[#1A2035] via-[#1A2035] to-transparent my-[30px] border-2 rounded-lg border-[#CA9E51]" >
+        <div class="row-span-10 col-span-3 w-[14vw] h-[95%] flex justify-start flex-col bg-gradient-to-b from-[#1A2035] via-[#1A2035] to-transparent my-[30px] border-2 rounded-lg border-[#CA9E51]" >
             <div class="flex mt-[20px] mx-[1vw] justify-between ">
               <p class="text-[0.95vw] text-[#c2c2c2]">Filter</p>
               <p class="text-[0.65vw] text-[#F9D390]">{"Reset"}</p>
@@ -69,7 +69,7 @@ useEffect(() => {
             </div>  
         </div>
         {/* inven grid */}
-        <div class="col-span-8  w-[56vw] h-[45vw] my-[30px]"  >
+        <div class="col-span-8  w-[56vw] h-[100%] my-[30px]"  >
           <div class="flex justify-between items-center">
             <p class="text-[1.1vw] text-[#c2c2c2]">{eggowned+" Result"}</p>
             <div class="flex  ">
@@ -92,7 +92,9 @@ useEffect(() => {
                     </div>
                   </div>
                   <img src={egg.image} alt='logo' class="h-[10.5vw] w-[9vw] mb-[0.5vw] self-center" />
-                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.3vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%"}} >
+                  {expbars(egg.exp,egg.evolForm)<=0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.5vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",boxShadow:"0px 0px 0.5vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.2vw rgba(0,0,0,0.7)",borderRadius:"0.1vw"}} >
+                </div>}
+                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.5vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",boxShadow:"0px 0px 0.5vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.2vw rgba(0,0,0,0.7)",borderRadius:"0.1vw"}} >
                 </div>}
                 </div>
             
@@ -141,13 +143,13 @@ useEffect(() => {
         </div>
       </div>  
       {/* MOBILE */}
-      <div class=" h-[1000px] w-[85vw] mx-[7.5vw]  MB:hidden" >
+      <div class=" h-[auto] w-[85vw] mx-[7.5vw]  MB:hidden" >
         <div class="flex justify-between items-center mt-[20px]">
           <div class="bg-[transparent] w-[70%] h-[40px] flex justify-start items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
-            <p class="text-[18px] pl-[30px] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
+            <p class="text-[3.5vw] pl-[30px] text-[#c2c2c2] ml-[0.5vw]">{"Search"}</p>
           </div>
           <div class="bg-[transparent] w-[32%] h-[40px] flex justify-center items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
-            <p class="text-[18px] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Filter"}</p>
+            <p class="text-[3.5vw] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Filter"}</p>
           </div>
         </div>
         <div class="flex justify-between items-center mt-[10px]">
@@ -155,7 +157,7 @@ useEffect(() => {
             <p class="text-[23px]  text-[#c2c2c2] ml-[0.5vw]">{eggowned+" Result"}</p>
           </div>
           <div class="bg-[transparent] w-[45%] h-[40px] flex justify-start items-center border-[1px] rounded-md border-[#CA9E51] mr-[3.75vw]"  >
-            <p class="text-[18px] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
+            <p class="text-[3.5vw] pl-[10px] text-[#c2c2c2] ml-[0.5vw]">{"Name Acending"}</p>
           </div>
         </div>
         {/* mapping */}
@@ -170,7 +172,7 @@ useEffect(() => {
                     </div>
                   </div>
                   <img src={egg.image} alt='logo' class="h-[40vw] w-[33vw] mb-[0.5vw] self-center" />
-                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"#CA9E51"}} >
+                  {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"#CA9E51",boxShadow:"0px 0px 2vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.5vw rgba(0,0,0,0.5)",borderRadius:"0.1vw",borderRadius:"0.5vw",marginBottom:"0.3vw"}} >
                 </div>}
                 {!expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "transparent",height:"10px",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",borderWidth:"2px",borderRadius:"5px",borderColor:"transparent"}} >
                 </div>}
@@ -191,7 +193,7 @@ useEffect(() => {
            <div class=" animate-spin border-[2vw] border-[#1A2035] rounded-[50%] w-[15vw] h-[15vw] mr-[1vw] border-t-[#E2B15B]"></div>
            <p class=" animate-pulse text-[6vw] text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]">Fetching NFT List </p>
          
-         </div>}
+        </div>}
           {/* footer */}
           <div class="row-span-2 col-span-8  mt-[2vw]  flex justify-center items-center " >
             {currentpagem!=1&&<div onClick = {(e) => setCurrentpagem(currentpagem-1)} class=" cursor-pointer bginven rounded-lg border-[1px] border-[#F9D390] w-[5vw] h-[5vw] flex justify-center items-center">
@@ -219,7 +221,7 @@ useEffect(() => {
               </div>}
           </div>
       </div>
-  </>
+  </div>
   );
 };
 

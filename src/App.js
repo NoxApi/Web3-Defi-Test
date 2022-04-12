@@ -40,6 +40,7 @@ function App() {
   const [refetch,setRefetch] = useState(false)
   const [eggsamount,setEggsamount] = useState(0)
   const [eggowned,setEggowned] = useState(0)
+  const [sboutlet,setSboutlet] = useState("Mint")
 
   return (
     <Router>
@@ -51,7 +52,7 @@ function App() {
         bluramount,setBluramount,currentAccount,setCurrentAccount,evma,setEvma,
         isapprove,setIsapprove,isOpen,isOpen2,setIsOpen,setIsOpen2,rerender,setRerender
         ,isMobileMenu,setIsMobileMenu,eggsamount,setEggsamount,eggowned,setEggowned
-        ,refetch,setRefetch,isfeedopen,setIsfeedopen,today
+        ,refetch,setRefetch,isfeedopen,setIsfeedopen,today,sboutlet,setSboutlet
         }}>
 
         <div class ="w-full h-[90vh]">

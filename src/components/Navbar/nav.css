@@ -1,10 +1,4 @@
 .DEFI {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0 2rem;
-    height: 100%;
     cursor: pointer;
     @media (max-width:1024px) { 
       display: none;
@@ -13,10 +7,11 @@
 }
 .DDcontent{
   position: absolute;
-  display:flex;
+  z-index: -30;
   flex-direction: column;
   border-radius: 0.5rem;
   border-width: 2px;
+  display:flex;
   border-color: #F9D390;
   color: #fff;
   z-index: 10;
@@ -31,23 +26,44 @@
 
 }
 
-.DD > .DEFI:focus.active,
-.DEFI:hover{
-    color: #F9D390;
-    background:linear-gradient(black 25%, #CA9E51)
-  }
 
 .DD{
   position: relative;
-
+  pointer-events: auto;
 }
 
 .DD > .DEFI:focus+ .DDcontent {
+  pointer-events: auto;
   opacity: 1;
   z-index: 10;
   transform: translateY(0);
+  display:flex;
 }
 .DEFI.active{
   color: #F9D390;
-    background:linear-gradient(black 25%, #CA9E51)
+    background:linear-gradient(black 25%, #CA9E51);
+    pointer-events:visible;;
+}
+.naviga{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 2rem;
+  height: 100%;
+  cursor: pointer;
+
+  @media screen and (max-width: 1200px) {
+    display:none;
+  }
+}
+.tick{
+  background:linear-gradient(#F9D390 25%, #E2B15B);
+  box-shadow:  0px 0px 3.5vh #CA9E51,
+                 1px 1px 10px rgba(0,0,0,0),
+                inset -2px -2px 20px rgba(255,255,255,0.1),
+                inset 2px 2px 4px black;
+  color:black; 
+  text-shadow: 0 0 2vh white,
+             0px 0px 2vh black;    
 }

@@ -5,10 +5,12 @@ import { useContext,useState,useEffect } from 'react';
 import Sbcontracthook from './secretpetcom/sbcontracthook';
 import { MainContext } from '../App';
 import SuccessModal from './farmcom/successmodal';
+import { CSSTransition } from 'react-transition-group';
 export const SacredContext = React.createContext(null);
 const Sacred = () => {
   var base64 = require('base-64');
-  const {eggsamount,setEggsamount,eggowned,refetch,setRefetch,rerender,setRerender} = useContext(MainContext)
+  const [AT,setAT] = useState("Mint")
+  const {eggsamount,setEggsamount,eggowned,refetch,setRefetch,rerender,setRerender,setSboutlet} = useContext(MainContext)
   const [isOpen,setIsOpen] = useState(false)
   const {mint,feed,rdyreward,lockedinfo,tokenURI,geteggidbyindex,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock,ardallow,approveEVM } = Sbcontracthook()
   const [NFTlist,setNFTlist]=useState([])
@@ -18,9 +20,25 @@ const Sacred = () => {
   const [refood,setRefood] = useState(false)
   const [allowanceamount,setAllowanceamount] = useState(0)
 
+  const kuy = document.querySelectorAll('.kuy');
+  function activeLink(){
+    kuy.forEach((items) => items.classList.remove('select'));
+    this.classList.add('select');
+  }
+  kuy.forEach((item)=>item.addEventListener('click',activeLink))
+
   const checkallow = async () => {
     const x = await ardallow()
     setAllowanceamount(x)
+  }
+
+  function clickswitch(){
+    if (AT==="Mint"){
+      setAT("Inven")
+    }
+    if (AT==="Inven"){
+      setAT("Mint")
+    }
   }
   
   const eggsloop = async () => {
@@ -79,16 +97,17 @@ useEffect(() => {
         eggsamount,setEggsamount,NFTlist,fetchingeggs,setFetchingeggs,feed,rdyreward,lockedinfo,reclaim,mint,egggsbalance,getbalance,evolve,isOpen,setIsOpen,
         id,setId,geteggidbyindex,tokenURI,NFTlist,feededlist,unlock,refetch,refood,setRefood,ardallow,allowanceamount,approveEVM
         }}>
-    <div class="bg">    
-    <div style={{height:"120%",justifyContent:'center',textAlign:"center",alignContent:'center',alignItems:"center",alignSelf : "center" }}>
-       <div class=" h-[10vh] flex justify-center items-end rounded-md">
-         <div class="bg-[#1A2035] flex p-[2px] rounded-md">
-            <Link to="Mint" class="bg-[#1A2035] box-border border-[#000000]   w-[10vw] h-[2.5vw] MBH:w-[25vw] MBH:h-[50px]  focus:text-[#000000] focus:bg-[#F9D390] text-white flex items-center justify-center" activeStyle>
-              <p class= " text-[0.85vw]  bold MBH:text-[18px] MBH:p-0" >{"Mint"}</p>
-            </Link>
-            <Link to="Inven" class="box-border border-[#000000]  bg-[#1A2035]  w-[10vw] h-[2.5vw] MBH:w-[25vw] MBH:h-[50px] focus:text-[#000000] focus:bg-[#F9D390] text-white flex items-center justify-center" activeStyle>
-                <p class=" text-[0.85vw]  MBH:text-[18px] MBH:p-0"  >{"My Pets"}</p>
-            </Link>
+    <div class="bg h-[auto] MBH:h-auto">    
+    <div style={{height:"auto",justifyContent:'center',textAlign:"center",alignContent:'center',alignItems:"center",alignSelf : "center" }}>
+       <div class=" h-[10vh] flex justify-center items-end ">
+         <div className="duck flex w-[20vw] bg-[#1A2035] rounded-[0.4vw] MBH:rounded-xl border-[#000] border-[0.1vw] MBH:w-[50vw] z-[1]">
+         <Link to={"Mint"} onClick={()=>setSboutlet("Mint")} className="kuy select box-border border-[#000000]    w-[10vw] h-[2.5vw] MBH:w-[25vw] MBH:h-[50px]   text-white flex items-center justify-center" >
+            <p className="text-[1.1vw] MBH:text-[4vw]"> Mint </p>
+          </Link>
+          <Link to={"Inven"} onClick={()=>setSboutlet("inven")}className="kuy box-border border-[#000000]   w-[10vw] h-[2.5vw] MBH:w-[25vw] MBH:h-[50px]   text-white flex items-center justify-center" >
+            <p className="text-[1.1vw] MBH:text-[4vw]"> My Pet</p>
+          </Link>
+          <div className="navigator w-[10vw] h-[2.5vw] MBH:w-[25vw] MBH:h-[50px] MBH:rounded-lg"></div>
           </div>
       </div>
       

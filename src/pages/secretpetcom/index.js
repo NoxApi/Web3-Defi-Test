@@ -8,7 +8,7 @@ const Mintpet = () => {
   const {eggsamount,setEggsamount,mint,allowanceamount,approveEVM} = useContext(SacredContext)
   const price= eggsamount*10
   return (
-  <>
+  <div class="h-[100vh] MBH:h-auto">
 
       <div class="grid grid-cols-5 gap-[2vw] h-[35vw] w-[60vw] px-[2.5vw] ml-[20vw] MBH:hidden" >
         {/* griditem */}
@@ -65,7 +65,7 @@ const Mintpet = () => {
         </div> 
       </div>
       {/* MOBILE */}
-      <div class=" h-[1000px] w-[80vw] mx-[10vw]  MB:hidden" >
+      <div class=" h-[100%] w-[80vw] mx-[10vw]  MB:hidden" >
         <div class=" w-[100%] h-[450px] flex justify-between items-center flex-col my-[5vh]" >
             <img src={egg} alt='logo' class="h-[300px] w-[100%]"  />
             <div class="box-border rounded-2xl  w-[100%] h-[100px] bg-[#1A2035] border-2 border-[#F9D390] flex content-center">
@@ -122,7 +122,7 @@ const Mintpet = () => {
       </div>
       
       
-  </>
+  </div>
   );
 };
 

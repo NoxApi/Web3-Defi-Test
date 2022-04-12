@@ -14,8 +14,15 @@ import {
 import Contractshook from '../../pages/farmcom/contractshook';
 
 const Navbar = () => {
-  const {currentAccount,evma,setIsMobileMenu} = useContext(MainContext)
+  const {currentAccount,evma,setIsMobileMenu,sboutlet,setSboutlet} = useContext(MainContext)
   const {connectWallet,approveEVM} = Contractshook()
+
+  const naviga = document.querySelectorAll('.naviga');
+  function activeLink(){
+    naviga.forEach((items) => items.classList.remove('tick'));
+    this.classList.add('tick');
+  }
+  naviga.forEach((item)=>item.addEventListener('click',activeLink))
 
   useEffect(() => {
     console.log("Navbar render")
@@ -25,33 +32,33 @@ const Navbar = () => {
       <Nav>
       <NavMenu>
         <div class="flex"> 
-            <NavLink2 to='/' >
+            <NavLink2 to='/' onClick={()=>setSboutlet("mint")} >
               <img src={evermoon1} alt='logo' class="h-[50px] bp1:w-[15vw] bp1:h-[15vw]" />
             </NavLink2>
             <div class="flex ml-[280px] bp2:ml-0 ">
-              <NavLink to='/Mp' activeStyle>
+              <Link onClick={()=>setSboutlet("mint")} className="naviga tick" to='/Mp' >
                 MARKETPLACE
-              </NavLink>
-              <NavLink to='/Cap' activeStyle>
+              </Link>
+              <Link onClick={()=>setSboutlet("mint")} className="naviga" to='/Cap' >
                 CAPSULE
-              </NavLink>
+              </Link>
               <div className="DD">
-              <button className="DEFI" activeStyle>
+              <button className="DEFI naviga" >
               DE-FI
               </button>
                 <div className="DDcontent">
-                  <Link   to='/Farm' class="mt-[1.5vh] py-[3px] ml-[0.5vw]">
+                  <Link className="naviga"  to='/Farm' class="mt-[1.5vh] py-[3px] ml-[0.5vw]">
                     FARM
                   </Link>
-                  <Link  to='/SP' class="mt-[1.5vh] py-[3 px] ml-[0.5vw]">
+                  <Link className="naviga" to={'/SP/'+sboutlet} class="mt-[1.5vh] py-[3 px] ml-[0.5vw]">
                     SACRET-PET
                   </Link>
                 </div>
               </div>
           
-              <NavLink to='/Tribe' activeStyle>
+              <Link onClick={()=>setSboutlet("mint")} className="naviga" to='/Tribe'>
                 TRIBE CHALLENGE
-              </NavLink>
+              </Link>
             </div>
         </div>
         

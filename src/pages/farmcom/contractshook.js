@@ -17,7 +17,6 @@ const Contractshook = () => {
   const evmABI = abi3.abi;
   const minichefABI = abi.abi;
   const { ethereum } = window;
-// <<<<<<< Fuck-Up
   
   var provider = "";
   var signer = "";
@@ -197,7 +196,6 @@ const Contractshook = () => {
   const withdraw = async () => {
     try{
       if (ethereum) {
-        console.log(ethers.utils.parseUnits(""+amount, 18))
         const tx = await farm.withdraw(0,ethers.utils.parseUnits(""+amount, 18),currentAccount)
         closeModal2()
         setIsMining("")
