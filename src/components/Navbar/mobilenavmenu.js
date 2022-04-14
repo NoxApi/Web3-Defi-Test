@@ -8,13 +8,11 @@ import "./../../pages/farmcom/farm.css"
 import { MainContext } from '../../App';
 import { Dialog,Transition  } from '@headlessui/react'
 import { useContext,Fragment } from 'react'
-import Contractshook from '../../pages/farmcom/contractshook';
 
 const Mobilenav = () => {
 
 
-    const {isMobileMenu,currentAccount,evma,setIsSuccess,setBluramount,isSuccess,setIsMobileMenu} = useContext(MainContext)
-    const {connectWallet} = Contractshook()
+    const {isMobileMenu,currentAccount,evma,setIsSuccess,setBluramount,isSuccess,setIsMobileMenu,connectWallet} = useContext(MainContext)
     const [isclick,setIsclick] = useState("hidden")
     
 

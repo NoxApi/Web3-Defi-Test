@@ -2,14 +2,15 @@
 import './farm.css'
 import { useContext } from 'react';
 import { MainContext } from '../../App';
+import { FarmContext } from '../Farm';
 import ayla1 from '../../images/Ayla1.svg'
-import bg from '../../images/bg.svg'
+import mm from '../../images/metamask.svg'
 import evermoonlogo from '../../images/EVMBNBLP.svg';
 
 const Farmmain = (props) => {
     const harvest = props.harvest;
-    const {bluramount,setBluramount,isapprove,setIsOpen,setIsOpen2,evmstaked,evmearn } = useContext(MainContext)
-
+    const {bluramount,setBluramount,setIsOpen,setIsOpen2,evmstaked,evmearn,ethereum,connectWallet,currentAccount} = useContext(MainContext)
+    const {isapprove} = useContext(FarmContext)
    function setclick() {
       setIsOpen(true)
       setBluramount("blur(4px)")
@@ -18,7 +19,7 @@ const Farmmain = (props) => {
       setIsOpen2(true)
       setBluramount("blur(4px)")
     }
-    
+   
 return(
   <div class=" bg z-[-20]">
     <div  style={{ height:"100vh",width:"100vw", filter:bluramount }}>
@@ -33,77 +34,81 @@ return(
     </div >
       {/* Farm Card */}
     <div class="MBH:hidden" >
-    <img src={bg}  className="absolute w-[70vw] h-[40vw]  z-[0] mr-[10vw] left-[14.9vw] "/>
-    <div className="Abackground">
-    
-      <div class="grid grid-cols-4 gap-[2vw] h-[35vw] w-[70vw] pr-[2.5vw] z-20 " >
-      
+    <div className="Abackground bg-[cardbackground]">
+      {/* leftcard */}
+      <div class="grid grid-cols-4 gap-[2vw] h-[100%] w-[70vw] pr-[2.5vw] z-20" >
         <div class="row-span-4 col-span-2 w-[100%] h-[100%] flex items-center justify-center" >
         <img src={ayla1} alt='logo' className ="Aone" />
-        <img src={evermoonlogo} alt='logo' class="Atwo"  />
+        <img src={evermoonlogo} alt='logo' className="Atwo w-[17vw] h-[17vw]"  />
     
         </div>
-        <div class=" flex col-span-2  h-[7vw] justify-between " >
-          <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[2vw] items-center py-[3vw]">
+        {/* rigth card */}
+        <div class=" flex col-span-2  h-[4vw] justify-between items-center mt-[1vw]" >
+          <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] text-[1.8vw] items-center py-[3vw] mt-[1vw]">
             EVM-BNB
           </div>
-          <div class=" text-[#FFFFFF] text-[0.8vw]  py-[3vw] space-y-[0.6vw] ">
+          <div class=" text-[#FFFFFF] text-[0.7vw]  py-[3vw] space-y-[0.4vw] mt-[1vw] ">
             <p>Get EVM-BNB LP </p>
             <p>View Contract </p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] z-20 bg-[#121624] flex content-center">
+
+        <div class="box-border rounded-[1vw] w-[100%] h-[6vw] bg-[#121624] flex items-center">
           <div class=" p-[2vw] space-y-[0.6vw]">
             <p class="text-[#C2C2C2] text-[0.8vw]">APR </p>
-            <p class="text-[#FFFFFF] text-[1vw]">{560000}</p>
+            <p class="text-[#FFFFFF] text-[1vw]">{560000+" %"}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[7.5vw] z-20 bg-[#121624] flex content-center">
+        <div class="box-border rounded-[1vw]  w-[100%] h-[6vw]  bg-[#121624] flex items-center">
           <div class=" p-[2vw] space-y-[0.6vw]">
               <p class="text-[#C2C2C2] text-[0.8vw]">Liquidity </p>
               <p class="text-[#FFFFFF] text-[1vw]">{"$"+400000000}</p>
           </div>
         </div>
-        <div class="box-border rounded-3xl w-[16vw] h-[13vw] z-20 bg-[#121624] flex content-center" >
-          <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]" >
+        <div class="box-border rounded-[1vw]   w-[100%] h-[11vw]  flex items-center justify-center bg-[#121624] ">
+          <div class="  px-[1.5vw] py-[1vw]  w-[100%] h-[100%] flex flex-col justify-between" >
               <p class="text-[#C2C2C2] text-[0.9vw]">EVM Earned</p>
-              {(isapprove===1||isapprove===2) && <p class="text-[#C2C2C2] text-[1.1vw]">{parseFloat(evmearn).toFixed(5)+" EVM"}</p>}
-              {(isapprove===0) &&<p class="text-[#767676] text-[1.1vw]">{0+" EVM"}</p>}
-              {(isapprove===1||isapprove===2) && <p class="text-[#c2c2c2] text-[0.6vw]">{"$"+parseFloat((evmearn*0.08)).toFixed(5)}</p>}
-              {(isapprove===0) &&<p class="text-[#767676] text-[0.6vw]">{"$"+0}</p>}
-              {(isapprove===0||isapprove===1) && <button class="box-border border-[#ffffff] rounded-lg bg-[#7f7f7f] " >
-                <p class="text-[#000000] text-[1.2vw] py-[0.4vw] px-[4vw]" >{"Harvest"}</p>            
-              </button>}
-              {isapprove===2 && 
-              <button class="box-border border-[#000000] rounded-lg bg-[#F9D390]" onClick={harvest} >
-                <p class="text-[#000000] text-[1.2vw] py-[0.4vw] px-[4vw]" >{"Harvest"}</p>
+              {currentAccount!=="" && <p class="text-[#C2C2C2] text-[1.1vw]">{parseFloat(evmearn).toFixed(5)+" EVM"}</p>}
+              {currentAccount==="" &&<p class="text-[#767676] text-[1.3vw]">{0+" EVM"}</p>}
+              {currentAccount!=="" && <p class="text-[#c2c2c2] text-[0.6vw]">{"$"+parseFloat((evmearn*0.08)).toFixed(5)}</p>}
+              {currentAccount==="" &&<p class="text-[#767676] text-[0.6vw] mb-[0.2]">{"$"+0}</p>}
+              {isapprove===false && <div class="greybgbutton box-border border-[#ffffff] flex h-[2.5vw] items-center justify-center w-[100%]">
+                <p class=" text-[#000000] text-[1.2vw]" >{"Harvest"}</p>            
+              </div>}
+              {isapprove===true && 
+              <button class="goldbgbutton box-border border-[#000000] h-[2.5vw] " onClick={harvest} >
+                <p class="text-[#000000] text-[1.2vw]" >{"Harvest"}</p>
               </button>}
           </div>
         </div>
-        <div class="box-border rounded-3xl  w-[16vw] h-[13vw] z-20 bg-[#121624] flex content-center">
-          <div class=" p-[2vw] space-y-[0.7vw] w-[16vw]">
+
+        <div class="box-border rounded-[1vw]   w-[100%] h-[11vw]  flex items-center justify-center bg-[#121624] mb-[]">
+          <div class=" px-[1.5vw] py-[1vw]  w-[100%] h-[100%] flex flex-col justify-between">
               <p class="text-[#C2C2C2] text-[0.9vw]">EVM-BNB Staked</p>
-              {(isapprove===1||isapprove===2)  &&<p class="text-[#FFFFFF] text-[1.2vw]">{evmstaked}</p>}
-              {isapprove===(0) &&<p class="text-[#767676] text-[1.1vw]">{0}</p>}
+              {currentAccount!=="" &&<p class="text-[#FFFFFF] text-[1.2vw]">{evmstaked}</p>}
+              {currentAccount==="" &&<p class="text-[#767676] text-[1.3vw]">{0}</p>}
               <p class="text-[#767676] text-[0.6vw]">&zwnj;</p>
-              {isapprove===0 &&<button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick ={setclick}>
-               <p class="text-[#000000] text-[1.2vw] py-[0.6vw] px-[3.5vw]" >{"Stake LP"}</p>
+              {currentAccount==="" &&<button class="goldbgbutton box-border border-[#000000] h-[2.5vw] flex items-center justify-center"onClick={()=>connectWallet()} >
+                <img src={mm} alt="" />
+               <p class="text-[#000000] text-[1.1vw]  "  >{"Connect Wallet"}</p>
               </button>}
-              {isapprove===1 &&<button class="box-border border-[#000000] rounded-lg bg-[#F9D390] " onClick ={setclick}>
-               <p class="text-[#000000] text-[1.2vw] py-[0.6vw] px-[3.5vw]" >{"Stake LP"}</p>
+              {isapprove===false &&currentAccount!==""&&<button class="goldbgbutton box-border border-[#000000] h-[2.5vw] flex items-center justify-center " onClick ={()=>setclick()}>
+               <p class="text-[#000000] text-[1.2vw] " >{"Approve"}</p>
               </button>}
+              {isapprove===true &&evmstaked===0&&<button class="goldbgbutton box-border border-[#000000] h-[2.5vw] flex items-center justify-center " onClick ={()=>setclick()}>
+               <p class="text-[#000000] text-[1.2vw] " >{"Stake LP"}</p>
+              </button>}
+              {isapprove===true &&evmstaked>0&&
             <div class= "h-[3vw] flex content-center">
-              {
-              isapprove===2 && <div class="flex justify-between w-[14vw] h-[2.55vw]" >
-              <button class="box-border border-2 border-[#DD6AB7] rounded-lg bg-[#181D31] w-[5.87vw] flex justify-center items-center" onClick ={setclick2}>
-              <p class="text-[#DD6AB7] text-[0.7vw]  " >{"-Unstake "}</p>
+               <div class="flex justify-between w-[100%]  items-center mt-[0.5vw]" >
+              <button class="cutcorner    bg-[#181D31] w-[48%] h-[2.5vw] flex justify-center items-center " onClick ={setclick2}>
+              <p class="text-[#DD6AB7] text-[0.9vw]  " >{"-Unstake "}</p>
              </button>
-              <button class="box-border border-2 border-[#74BFC8]  rounded-lg bg-[#181D31] w-[5.87vw] flex justify-center items-center " onClick ={setclick}>
-               <p class="text-[#74BFC8] text-[0.7vw] " >{"+Stake"}</p>
+              <button class="cutcorner    bg-[#181D31] w-[48%] h-[2.5vw] flex justify-center items-center " onClick ={setclick}>
+               <p class="text-[#74BFC8] text-[0.9vw] " >{"+Stake"}</p>
               </button>
-             </div>
-              }
-            </div>
+             </div>           
+            </div>}
           </div>
         </div>
       </div>

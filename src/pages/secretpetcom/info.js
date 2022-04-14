@@ -180,9 +180,9 @@ const Info = () => {
             
         </div>
         <div class="self-center origin-center flex justify-between w-[20.3vw]">
-            <button onClick={(e)=>reclaim(id)}class="text-black  border-black mt-[1vw] bg-[#F9D390] py-[0.2vw]  border-2 rounded-md text-[1vw] w-[10vw] text-center">RECLAM</button>
-            {expbars<100&&<button onClick={(e)=>setclick()} class="text-black  border-black mt-[1vw]  bg-[#F9D390] py-[0.2vw] border-2 rounded-md text-[1vw] w-[10vw] text-center">{"FEED "}</button>}
-            {expbars==100&&<button onClick={(e)=>evolve(id)} class="text-black  border-black mt-[1vw]  bg-[#F9D390] py-[0.2vw] border-2 rounded-md text-[1vw] w-[10vw] text-center">{"Evolve "}</button>}
+            <button onClick={(e)=>reclaim(id)}class="goldbgbutton text-black   mt-[1vw]  py-[0.2vw]   text-[1vw] w-[10vw] text-center">RECLAM</button>
+            {expbars<100&&<button onClick={(e)=>setclick()} class="goldbgbutton text-black   mt-[1vw]   py-[0.2vw]   text-[1vw] w-[10vw] text-center">{"FEED "}</button>}
+            {expbars==100&&<button onClick={(e)=>evolve(id)} class="goldbgbutton text-black   mt-[1vw]   py-[0.2vw]  text-[1vw] w-[10vw] text-center">{"Evolve "}</button>}
         </div>
         <div class="flex self-center w-[30vw] mt-[3vw] flex-col">
           <p class="text-left text-white text-[0.9vw]">Amount</p>
@@ -275,9 +275,9 @@ const Info = () => {
             
         </div>
         <div class="self-center origin-center flex  flex-col justify-center items-center w-[100%] mt-[40px] ">
-            <button onClick={(e)=>reclaim(id)}class="text-black  border-black mt-[1vw] bg-[#F9D390] py-[0.2vw]  border-2 rounded-lg text-[3vw] font-bold w-[100%] h-[12vw] text-center">RECLAM</button>
-            {expbars<100&&<button onClick={(e)=>setclick()} class="text-black  border-black mt-[10px] bg-[#F9D390] py-[0.2vw]  border-2 rounded-lg text-[3vw] font-bold w-[100%] h-[12vw] text-center">{"FEED "}</button>}
-            {expbars==100&&<button onClick={(e)=>evolve(id)} class="text-black  border-black mt-[10px] bg-[#F9D390] py-[0.2vw]  border-2 rounded-lg text-[3vw] font-bold w-[100%] h-[12vw] text-center ">{"Evolve "}</button>}
+            <button onClick={(e)=>reclaim(id)}class=" goldbgbutton text-black   mt-[1vw]  py-[0.2vw]  border-2  text-[3vw] font-bold w-[100%] h-[12vw] text-center">RECLAM</button>
+            {expbars<100&&<button onClick={(e)=>setclick()} class="goldbgbutton text-black   mt-[10px]  py-[0.2vw]    text-[3vw] font-bold w-[100%] h-[12vw] text-center">{"FEED "}</button>}
+            {expbars==100&&<button onClick={(e)=>evolve(id)} class="goldbgbutton text-black   mt-[10px]  py-[0.2vw]   text-[3vw] font-bold w-[100%] h-[12vw] text-center ">{"Evolve "}</button>}
         </div>
         <div class="flex self-center w-[100%] mt-[40px] flex-col">
           <p class="text-left text-white text-[4vw]">Amount</p>

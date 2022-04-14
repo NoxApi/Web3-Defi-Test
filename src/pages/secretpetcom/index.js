@@ -1,12 +1,15 @@
 import React from 'react';
 import egg from "./../../images/egg.svg"
-import { useState,useContext } from 'react';
+import mm from "./../../images/metamask.svg"
+import { useContext } from 'react';
 import { SacredContext } from '../Sacredpet';
-import Sbcontracthook from './sbcontracthook';
+import { MainContext } from '../../App';
 
 const Mintpet = () => {
   const {eggsamount,setEggsamount,mint,allowanceamount,approveEVM} = useContext(SacredContext)
+  const {evma,connectWallet}= useContext(MainContext)
   const price= eggsamount*10
+  console.log(allowanceamount)
   return (
   <div class="h-[100vh] MBH:h-auto">
 
@@ -40,7 +43,7 @@ const Mintpet = () => {
             </div>
             <div class="flex justify-between mt-[1.5vw]">
               <p class="text-[0.75vw] text-[#c2c2c2]">Your balance</p>
-              <p class="text-[0.85vw] text-[#c2c2c2]">{10.232+" EVM"}</p>
+              <p class="text-[0.85vw] text-[#c2c2c2]">{parseFloat(evma).toFixed(3) + " EVM"+" EVM"}</p>
             </div>  
             <div class="flex justify-between mt-[1.5vw]">
               <p class="text-[0.75vw] text-[#c2c2c2]">Pet Price</p>
@@ -52,14 +55,18 @@ const Mintpet = () => {
               <p class="text-[1.1vw] text-white">{price+" EVM"}</p>
             </div>  
             <div class="flex justify-end mt-[1.5vw]">
-              <p class="text-[0.70vw] text-[#c2c2c2]">{"$ "+200.00}</p>
+              <p class="text-[0.70vw] text-[#c2c2c2]">{"$ "+price*10}</p>
             </div>              
           </div>
-          {allowanceamount>0&&<button onClick={(e)=>mint(eggsamount)} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
+          {allowanceamount>0&&<button onClick={(e)=>mint(eggsamount)} class="goldbgbutton w-[100%] h-[3vw] flex items-center justify-center">
             <p class="font-bold">Mint</p>
           </button>}
-          {allowanceamount==0&&<button onClick={(e)=>approveEVM()} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[45px] rounded-lg border-2">
+          {allowanceamount===0&&<button onClick={(e)=>approveEVM()} class="goldbgbutton w-[100%] h-[3vw] flex items-center justify-center">
             <p class="font-bold">Approve</p>
+          </button>}
+          {allowanceamount===-1&&<button onClick={(e)=>connectWallet()} class="goldbgbutton w-[100%] h-[3vw] flex items-center justify-center">
+            <img src={mm} alt="logo" />
+            <p class="font-bold text-[1vw]" >Connect wallet</p>
           </button>}
 
         </div> 
@@ -108,11 +115,14 @@ const Mintpet = () => {
               <p class="text-[14px] text-[#c2c2c2]">{"$ "+200.00}</p>
             </div>              
           </div>
-          {allowanceamount>0&&<button onClick={(e)=>mint(eggsamount)} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[60px] rounded-lg border-2">
+          {allowanceamount>0&&<button onClick={(e)=>mint(eggsamount)} class="goldbgbutton w-[100%] h-[60px]  border-2">
             <p class="font-bold">Mint</p>
           </button>}
-          {allowanceamount==0&&<button onClick={(e)=>approveEVM()} class="bg-gradient-to-b from-[#F9D390] to-[#E2B15B] w-[100%] h-[60px] rounded-lg border-2">
+          {allowanceamount===0&&<button onClick={(e)=>approveEVM()} class="goldbgbutton w-[100%] h-[60px]  border-2">
             <p class="font-bold">Approve</p>
+          </button>}
+          {allowanceamount===-1&&<button onClick={(e)=>mint(eggsamount)} class="goldbgbutton w-[100%] h-[60px]  border-2">
+            <p class="font-bold">Connect wallet</p>
           </button>}
 
         </div> 

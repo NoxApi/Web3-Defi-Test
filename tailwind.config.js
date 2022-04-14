@@ -2,6 +2,7 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    
       screens: {
         'bp1': { 'max': '1535px'},
         // => @media (min-width: 640px and max-width: 767px) { ... }
@@ -39,6 +40,7 @@ module.exports = {
   plugins: [
     plugin(function ({ addUtilities }) {
       const fonts = {
+        
         '.font-tavi': {
           fontFamily: '"Taviraj", serif',
         },

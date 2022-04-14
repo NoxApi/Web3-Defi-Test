@@ -109,7 +109,7 @@ const Sbcontracthook = () => {
         console.log(ls/1);
         return (ls/1)
     } catch (error) {
-      console.log(error)
+      return -1
     }
   }
   const approveEVM = async () => {
@@ -290,7 +290,7 @@ const Sbcontracthook = () => {
 
   useEffect(() => {
     howmanyegg();
-    console.log("loop done")
+    console.log("Sacred beast Contract")
   }, [rerender,currentAccount])
     return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock,ardallow,approveEVM}
   };

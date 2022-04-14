@@ -11,15 +11,12 @@ import { Link } from 'react-router-dom';
 import './nav.css'
 import {
   Nav,
-  NavLink,
   NavLink2,
   NavMenu,
 } from './NavbarElements';
-import Contractshook from '../../pages/farmcom/contractshook';
 
 const Navbar = () => {
-  const {currentAccount,evma,setIsMobileMenu,sboutlet,setSboutlet,isMobileMenu,setBluramount} = useContext(MainContext)
-  const {connectWallet,approveEVM} = Contractshook()
+  const {currentAccount,evma,setIsMobileMenu,sboutlet,setSboutlet,isMobileMenu,setBluramount,connectWallet} = useContext(MainContext)
   function closeModal() {
     setIsMobileMenu(false)
     setBluramount("blur(0px)")

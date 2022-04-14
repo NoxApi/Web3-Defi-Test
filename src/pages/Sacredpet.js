@@ -4,8 +4,7 @@ import { Link,Outlet } from 'react-router-dom';
 import { useContext,useState,useEffect } from 'react';
 import Sbcontracthook from './secretpetcom/sbcontracthook';
 import { MainContext } from '../App';
-import SuccessModal from './farmcom/successmodal';
-import { CSSTransition } from 'react-transition-group';
+import SuccessModal from '../components/Global Modal/successmodal';
 export const SacredContext = React.createContext(null);
 const Sacred = () => {
   var base64 = require('base-64');
@@ -88,7 +87,7 @@ useEffect(() => {
   if (allowanceamount===0){
       checkallow()
   }
-}, [eggowned,rerender,refetch])
+}, [eggowned,refetch])
 
   //infopages
   return (
@@ -113,7 +112,6 @@ useEffect(() => {
       
       <Outlet/>
       <Feedmodal/>
-      <SuccessModal/>
     </div> 
     </div>   
   </SacredContext.Provider>
