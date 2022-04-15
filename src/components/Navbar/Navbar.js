@@ -81,10 +81,10 @@ const Navbar = () => {
           {currentAccount && (
           <div class="flex mb-[1vh] items-center">
             <div class="">
-              <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-[1vw] py-[0.6vh] px-[1vw] bp1:text-[0.85vw]" >{parseFloat(evma).toFixed(3) + " EVM"}</p>
+              <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B] font-bold text-[1vw] py-[0.6vh] px-[1vw] bp1:text-[0.85vw]" >{parseFloat(evma).toFixed(2) + " EVM"}</p>
               <div class="flex">
                 <img src={copy} alt="logo" className="w-[1vw] h-[1vw] cursor-pointer" onClick={() => {navigator.clipboard.writeText(currentAccount)}} />
-                <p class="text-[#C2C2C2] nav1:text-[0.8vw] ml-[0.2vw]" >{currentAccount.substring(0, 17)+"..."}</p>
+                <p class="text-[#C2C2C2] nav1:text-[0.8vw] ml-[0.2vw]" >{currentAccount.substring(0, 16)+"..."}</p>
               </div>
             </div>
             <img src={orca} alt="logo" class="w-[3.5vw] h-[3.5vw] rounded-full" />    

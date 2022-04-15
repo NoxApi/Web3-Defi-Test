@@ -27,7 +27,6 @@ const Mobilenav = () => {
     function closeModal() {
       setIsMobileMenu(false)
       setBluramount("blur(0px)")
-      console.log(isMobileMenu)
     }
   return (
       <>

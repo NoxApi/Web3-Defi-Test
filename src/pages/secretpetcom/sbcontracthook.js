@@ -106,7 +106,6 @@ const Sbcontracthook = () => {
   async function ardallow() {
     try {
         const ls = await evm.allowance(currentAccount, sacredbeastaddr)
-        console.log(ls/1);
         return (ls/1)
     } catch (error) {
       return -1

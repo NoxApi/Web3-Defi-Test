@@ -7,9 +7,8 @@ import { MainContext } from '../../App';
 
 const Mintpet = () => {
   const {eggsamount,setEggsamount,mint,allowanceamount,approveEVM} = useContext(SacredContext)
-  const {evma,connectWallet}= useContext(MainContext)
+  const {evma,connectWallet,currentAccount}= useContext(MainContext)
   const price= eggsamount*10
-  console.log(allowanceamount)
   return (
   <div class="h-[100vh] MBH:h-auto">
 
@@ -121,7 +120,10 @@ const Mintpet = () => {
           {allowanceamount===0&&<button onClick={(e)=>approveEVM()} class="goldbgbutton w-[100%] h-[60px]  border-2">
             <p class="font-bold">Approve</p>
           </button>}
-          {allowanceamount===-1&&<button onClick={(e)=>mint(eggsamount)} class="goldbgbutton w-[100%] h-[60px]  border-2">
+          {allowanceamount===-1&&<button onClick={(e)=>approveEVM()} class="goldbgbutton w-[100%] h-[60px]  border-2">
+            <p class="font-bold">Approve</p>
+          </button>}
+          {currentAccount===""&&<button onClick={(e)=>mint(eggsamount)} class="goldbgbutton w-[100%] h-[60px]  border-2">
             <p class="font-bold">Connect wallet</p>
           </button>}
 

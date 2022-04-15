@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import egg from "./../../images/egg.svg"
+import errorpinata from "./../../images/errorpinata.svg"
+import fetching from "./../../images/pinatafetching.svg"
 import { SacredContext } from '../Sacredpet';
 import { useState,useContext,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -20,7 +21,7 @@ const Info = () => {
   const [eggexp,setEggexp] = useState(0)
   const [eggef,setEggef] = useState(0)
   const [eggn,setEggn] = useState("")
-  const [eggi,setEggi] = useState(egg)
+  const [eggi,setEggi] = useState(fetching)
   const [unlocka,setUnlocka]=useState(0)
   const [fetchingfood,setFetchingfood] = useState(true)
   const [color,setColor]=useState("Digesting")
@@ -50,7 +51,6 @@ const Info = () => {
      const index = await feededlist(id)
      const format = ethers.utils.formatUnits(index)
      const reallyformat = format*(10**18)
-     console.log(reallyformat)
      setFeedindex(reallyformat)
      if (reallyformat===0){
       setFetchingfood(false)
@@ -67,7 +67,6 @@ const Info = () => {
     }
     for(const element of foodcounter){
       const x = await(lockedinfo(id,element))
-      console.log(x)
       food.push(x)
    }
    setFeedlist(food)
@@ -148,7 +147,6 @@ const Info = () => {
     getegginfo()
     gettotalbalance()
     console.log("info rerender")
-    console.log(refood)
   }, [rerender,feedindex,refood])
 
   return (
@@ -158,7 +156,7 @@ const Info = () => {
     </div>
 
       <div class="flex h-[80%] w-[60vw] px-[2.5vw] ml-[20vw] flex-col mt-[3vw] MBH:hidden" >
-        <img src={eggi} alt='logo' class="h-[18vw] w-[16vw] self-center mt-[5px]"  />
+        <img src={eggi} onError={(e)=>{e.target.onerror = null; e.target.src=errorpinata}} class="h-[18vw] w-[16vw] self-center mt-[5px]"  />
         <div class="self-center origin-center flex items-center my-[0.5vw]">
         <div class="bg-[#181D31] rotate-45 border-[0.1vw]  border-[#5F5F5F]  flex mt-[0.7vw] mr-[0.6vw] w-[2vw] h-[2vw] justify-center rounded-[0.5vw]">
                       <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[1.1vw] font-bold ">{eggef}</p>
@@ -222,7 +220,7 @@ const Info = () => {
           
           {!fetchingfood&&
           feedlist.map((food,index) => (
-          <div class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw] h-[3.5vw]"> 
+          <div key={food.unlockTime} class="flex justify-between bg-[#181D31] w-[30vw] py-[0.5vw] border-[1px] rounded-lg px-[0.3vw] mt-[1vw] h-[3.5vw]"> 
           <div style={{height:"100%",marginLeft:"1vw",backgroundColor:getcolor(food.unlockTime),boxShadow:"0.05vw 0.05vw 0.3vw "+getcolor(food.unlockTime)+",1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.1vw rgba(0,0,0,0.1)"}}>&nbsp;</div>    
           <div class={"text-left w-[12vw] text-white flex flex-col justify-start pl-[0.8vw] ml-[0.3vw]"}>
             <p class="text-[0.5vw]">feeded amount</p>

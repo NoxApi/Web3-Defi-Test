@@ -119,7 +119,6 @@ const check = async () => {
       try{
       const getevm = await evm.balanceOf(currentAccount)
       const formatedevm =ethers.utils.formatUnits(getevm)
-      console.log(formatedevm)
       setEvma(formatedevm)
       }
       catch (error) {

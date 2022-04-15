@@ -50,7 +50,6 @@ const Farmhook = () => {
   const getlp = async () => {
     if (currentAccount.length !== 0) {
       try{
-        console.log(ethers.utils.formatUnits(await token.balanceOf(currentAccount)))
         setLp(ethers.utils.formatUnits(await token.balanceOf(currentAccount)))
       }
       catch (error) {

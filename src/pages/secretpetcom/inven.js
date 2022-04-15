@@ -1,11 +1,10 @@
 import filter from "./../../images/filter.svg"
+import errorpinata from "./../../images/errorpinata.svg"
 import { SacredContext } from "../Sacredpet";
 import { MainContext } from "../../App";
 import { Link } from "react-router-dom";
 import { useState,useContext,useEffect} from "react";
-import Sbcontracthook from "./sbcontracthook";
 import { ethers } from "ethers";
-import math from "mathjs";
 const Inven = () => {
   const {NFTlist,fetchingeggs,setFetchingeggs,egggsbalance,getbalance,setEgggs,geteggidbyindex,tokenURI,} = useContext(SacredContext)
   const {eggowned,rerender} = useContext(MainContext)
@@ -87,14 +86,14 @@ useEffect(() => {
           {!fetchingeggs&&<div class="grid grid-cols-4 gap-[1vw] h-[40vw] w-[54vw] mt-[20px] " >
             {currentpageitems.map((egg,index) => (
               <Link key={egg.name} to={"/SP/Info/"+((egg.name).split("#"))[1]} class="row-span-1 col-span-1 w-[11vw] h-[19vw] flex-col justify-between">
-                <div class=" bginven  bordergold flex flex-col rounded-[0.3vw] border-[0.1vw] border-[#EEC377]">
+                <div key={egg.name} class=" bginven  bordergold flex flex-col rounded-[0.3vw] border-[0.1vw] border-[#EEC377]">
                   <div class="flex justify-between items-center ">
                     <p class="  text-center  bg-[#EF5350] ml-[0.6vw] px-[0.3vw] pb-[0.2vw] rounded-md text-white text-[0.7vw]"  >{"New"}</p>
                     <div class="bg-[#181D31] rotate-45 border-[0.1vw]  border-[#5F5F5F] rounded-[0.3vw]  flex mt-[0.7vw] mr-[0.6vw] w-[1.5vw] h-[1.5vw] justify-center">
                       <p class="text-transparent bg-clip-text bg-gradient-to-b from-[#F9D390] to-[#E2B15B]  rotate-[315deg] text-[0.8vw] font-bold ">{egg.evolForm}</p>
                     </div>
                   </div>
-                  <img src={egg.image} alt='logo' class="h-[10.5vw] w-[9vw] mb-[0.5vw] self-center" />
+                  <img src={egg.image} onError={(e)=>{e.target.onerror = null; e.target.src=errorpinata}} class="h-[10.5vw] w-[9vw] mb-[0.5vw] self-center" />
                   {expbars(egg.exp,egg.evolForm)<=0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.5vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",boxShadow:"0px 0px 0.5vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.2vw rgba(0,0,0,0.7)",borderRadius:"0.1vw"}} >
                 </div>}
                   {expbars(egg.exp,egg.evolForm)>0&&<div style={{background: "linear-gradient(180deg, #F9D390 0%, #E2B15B 100%)",height:"0.5vw",zIndex:"100px",width:(expbars(egg.exp,egg.evolForm))+"%",boxShadow:"0px 0px 0.5vw #CA9E51,1px 1px 0.5vw rgba(0,0,0,0),inset -2px -2px 20px rgba(255,255,255,0.1),inset 2px 2px 0.2vw rgba(0,0,0,0.7)",borderRadius:"0.1vw"}} >

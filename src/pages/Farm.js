@@ -13,7 +13,6 @@ const Farm = () => {
   const [isapprove, setIsapprove] = useState(false)
   const checkallowance= async () => {
     const allowance = await lpallowance()
-    console.log(allowance)
     if (allowance > 1){
       setIsapprove(true)
     }
@@ -24,7 +23,6 @@ const Farm = () => {
 
   useEffect(() => {
     checkallowance();
-    console.log(isapprove)
   }, [])
 
   return (

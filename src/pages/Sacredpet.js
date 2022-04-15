@@ -68,20 +68,16 @@ const Sacred = () => {
       setRefetch(false)
       setNFTlist(egggs)
       setEgggsbalance(balance)
-      console.log(NFTlist)
 }
 useEffect(() => {
-  console.log(refetch)
   if (fetchingeggs===false){
     if (eggowned!=NFTlist.length){
     eggsloop()
     }
-    console.log(NFTlist)
   }
   if (refetch===true){
     if (fetchingeggs===false){
     eggsloop()
-    console.log(NFTlist)
     }
   }
   if (allowanceamount===0){
