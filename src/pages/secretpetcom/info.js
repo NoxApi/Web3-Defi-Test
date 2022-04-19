@@ -27,13 +27,20 @@ const Info = () => {
   const [color,setColor]=useState("Digesting")
   const egggs=[]
   
+  async function getfood0(){
+    const x = await(lockedinfo(id,0))
+    console.log(x)
+    feedlist.push(x)
+    setFetchingfood(false)
+  }
+
   function setclick() {
     setIsfeedopen(true)
     setId(id)
   }
-  async function gettotalbalance() {
-    setTotalbalance(await getbalance(id))
-  }
+  // async function gettotalbalance() {
+  //   setTotalbalance(await getbalance(id))
+  // }
   async function getegginfo(){
     var y = await tokenURI(id);
     var z = String(y)
@@ -47,15 +54,15 @@ const Info = () => {
      setEggef(m.evolForm)
      setExpbars(getexpbars(m.exp,m.evolForm))
    }
-   async function getfeedindex(){
-     const index = await feededlist(id)
-     const format = ethers.utils.formatUnits(index)
-     const reallyformat = format*(10**18)
-     setFeedindex(reallyformat)
-     if (reallyformat===0){
-      setFetchingfood(false)
-     }
-   }
+  //  async function getfeedindex(){
+  //    const index = await feededlist(id)
+  //    const format = ethers.utils.formatUnits(index)
+  //    const reallyformat = format*(10**18)
+  //    setFeedindex(reallyformat)
+  //    if (reallyformat===0){
+  //     setFetchingfood(false)
+  //    }
+  //  }
    const getfeededlist = async() =>{
     const food=[]
     setFetchingfood(true)
@@ -123,29 +130,30 @@ const Info = () => {
 
  }
   useEffect(() => {
-    if (feedindex===-1){
-      getfeedindex()
-    }
-    if (feedindex>0){
-      if (feedlist.length===0){
-      getfeededlist()
-      getunlock()
-      }
-    }
-    if (refood){
-      if(!fetchingfood){
-        getfeedindex()
-      }
-    if (refood){
-      if(!fetchingfood){
-        if(feedindex!==feedlist.length){
-          getfeededlist()
-        }
-      }
-    }
-    }
+    // if (feedindex===-1){
+    //   getfeedindex()
+    // }
+    // if (feedindex>0){
+    //   if (feedlist.length===0){
+    //   getfeededlist()
+    //   getunlock()
+    //   }
+    // }
+    // if (refood){
+    //   if(!fetchingfood){
+    //     getfeedindex()
+    //   }
+    // if (refood){
+    //   if(!fetchingfood){
+    //     if(feedindex!==feedlist.length){
+    //       getfeededlist()
+    //     }
+    //   }
+    // }
+    // }
     getegginfo()
-    gettotalbalance()
+    // gettotalbalance()
+    // getfood0()
     console.log("info rerender")
   }, [rerender,feedindex,refood])
 

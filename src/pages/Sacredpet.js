@@ -54,20 +54,20 @@ const Sacred = () => {
     } 
     for(const element of eggscounter){
         var x = await geteggidbyindex(element);
-        var m = await getbalance(x);
+        // var m = await getbalance(x);
         var y = await tokenURI(x);
         
         var z = String(y)
         var c = z.split(",")
         var v = JSON.parse(base64.decode(c[1]));
         egggs.push(v)
-        balance.push(m)
+        // balance.push(m)
         }
       setRerender(rerender+1)
       setFetchingeggs(false)
       setRefetch(false)
       setNFTlist(egggs)
-      setEgggsbalance(balance)
+      // setEgggsbalance(balance)
 }
 useEffect(() => {
   if (fetchingeggs===false){

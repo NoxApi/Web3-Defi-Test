@@ -104,9 +104,9 @@ useEffect(() => {
                 <p class="text-left text-white text-[0.6vw]" >{"#"+((egg.name).split("#"))[1]}</p>
                 <div class="flex justify-between mt-[0.5vw]">
                   <p class="text-white text-[0.9vw] ">Amount</p>
-                  <p class="text-[#F9D390] text-[0.9vw]">{ethers.utils.formatUnits((egggsbalance[index])[0])+" EVM"}</p>
+                  <p class="text-[#F9D390] text-[0.9vw]">{"wait for the graph"}</p>
                 </div>
-                <p class="text-right text-[#C2C2C2] text-[0.5vw]" >{"$ "+ethers.utils.formatUnits((egggsbalance[index])[0])*10}</p>
+                <p class="text-right text-[#C2C2C2] text-[0.5vw]" >{"nothing to fetch"}</p>
               </Link>
             ))}
           </div>}
@@ -184,9 +184,9 @@ useEffect(() => {
                 <p class="text-left text-white text-[2.6vw] " >{"#"+((egg.name).split("#"))[1]}</p>
                 <div class="flex justify-between mt-[0.5vw]">
                   <p class="text-white text-[2.5vw] ">Amount</p>
-                  <p class="text-[#F9D390] text-[2.5vw]">{ethers.utils.formatUnits((egggsbalance[index])[0])+" EVM"}</p>
+                  <p class="text-[#F9D390] text-[2.5vw]">{"wait for the graph"}</p>
                 </div>
-                <p class="text-right text-[#C2C2C2] text-[2.3vw]" >{"$ "+ethers.utils.formatUnits((egggsbalance[index])[0])*10}</p>
+                <p class="text-right text-[#C2C2C2] text-[2.3vw]" >{"nothing to fetch"}</p>
               </Link>
             ))}
           </div>}

@@ -12,7 +12,7 @@ import { SacredContext } from '../Sacredpet';
 
 const Sbcontracthook = () => {
   //contract address
-  const sacredbeastaddr = "0xF0Ce8B8158bA00F923C29eE4e1290d3E5d4D61fA";
+  const sacredbeastaddr = "0x7B3FcB0C177fd8654272eBB9C5F084f62D9D964e";
   const contractAddress = "0x01b6AABf4c744a2c1718067BEa1bcaB1312ed42B";
   const pooladdr = "0xE7B2c20Ace3300724A8E612ac18B2ACB8259426B";
   const evmaddr= "0xf91375fbf40d920c31016E1473c6D44F334Af13F";
@@ -124,14 +124,14 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-  async function getbalance(id) {
-    try {
-      const TokenID = await SB.balances(id)
-      return TokenID;
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async function getbalance(id) {
+  //   try {
+  //     const TokenID = await SB.balances(id)
+  //     return TokenID;
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   async function evolve(id) {
     try {
       const tx = await SB.evolutionNFT(id)
@@ -164,14 +164,14 @@ const Sbcontracthook = () => {
       console.log(error)
     }
   }
-  async function feededlist(id) {
-    try {
-      const TokenID = await SB.feededlists(id);
-      return TokenID;
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async function feededlist(id) {
+  //   try {
+  //     const TokenID = await SB.feededlists(id);
+  //     return TokenID;
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   async function unlock(id) {
     try {
       const TokenID = await SB.getunlockamount(id);
@@ -222,7 +222,10 @@ const Sbcontracthook = () => {
     }
   }
 
-
+  const testf = async()=>{
+    const info = await SB.nftLocks(2,0);
+    console.log(info)
+  }
   async function lockedinfo(id,index) {
     try {
        const info = await SB.nftLocks(id,index);
@@ -288,10 +291,11 @@ const Sbcontracthook = () => {
   }    
 
   useEffect(() => {
+    testf ();
     howmanyegg();
     console.log("Sacred beast Contract")
   }, [rerender,currentAccount])
-    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,getbalance,supplyinfo,evolve,feededlist,unlock,ardallow,approveEVM}
+    return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,supplyinfo,evolve,unlock,ardallow,approveEVM}
   };
   
   export default Sbcontracthook;
