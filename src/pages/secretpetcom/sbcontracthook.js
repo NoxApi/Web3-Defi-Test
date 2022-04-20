@@ -12,10 +12,10 @@ import { SacredContext } from '../Sacredpet';
 
 const Sbcontracthook = () => {
   //contract address
-  const sacredbeastaddr = "0x7B3FcB0C177fd8654272eBB9C5F084f62D9D964e";
+  const sacredbeastaddr = "0xC33e5e206e046b8c1F08D358bBDF9CefaFb61Bcc";
   const contractAddress = "0x01b6AABf4c744a2c1718067BEa1bcaB1312ed42B";
   const pooladdr = "0xE7B2c20Ace3300724A8E612ac18B2ACB8259426B";
-  const evmaddr= "0xf91375fbf40d920c31016E1473c6D44F334Af13F";
+  const evmaddr= "0x5aaA11822988ba9fA7beD936A55A1B7fe93ce81d";
   const pairaddr= "0xD7fF6B0313baF3da58dD1e369817401fB7dEc4dd";
   //all abi
   const TokenABI = abi2.abi;
@@ -87,6 +87,14 @@ const Sbcontracthook = () => {
         const formateggs = ethers.utils.formatUnits(eggs);
         const formateggs2= formateggs*(10**18)
         setEggowned(formateggs2);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const getunlock= async () => {
+    try {
+        const eggs = await SB.getunlock(0);
+        console.log(eggs)
     } catch (error) {
       console.log(error)
     }
@@ -223,7 +231,7 @@ const Sbcontracthook = () => {
   }
 
   const testf = async()=>{
-    const info = await SB.nftLocks(2,0);
+    const info = await SB.nftLocks(0,0);
     console.log(info)
   }
   async function lockedinfo(id,index) {
@@ -293,6 +301,7 @@ const Sbcontracthook = () => {
   useEffect(() => {
     testf ();
     howmanyegg();
+    getunlock();
     console.log("Sacred beast Contract")
   }, [rerender,currentAccount])
     return {mint,howmanyegg,geteggidbyindex,tokenURI,feed,rdyreward,lockedinfo,reclaim,supplyinfo,evolve,unlock,ardallow,approveEVM}
